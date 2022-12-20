@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Exo+2&family=Kalam&family=Montserrat+Alternates&family=Patrick+Hand&family=Righteous&family=Unbounded&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-title {
+  font-family: "Exo 2", sans-serif;
+  font-size: 28px;
+}
