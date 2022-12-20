@@ -1,9 +1,12 @@
 import { createContext, useReducer } from "react";
-import AnimalReducer from "../context/AnimalReducer";
+import AnimalReducer from "./AnimalReducer";
+import axios from "axios";
 
 const AnimalContext = createContext();
 
 export const AnimalProvider = ({ children }) => {
+  const searchAnimal = async (name) => {};
+
   const initialState = {
     animals: [],
     animal: {},
@@ -11,7 +14,7 @@ export const AnimalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AnimalReducer, initialState);
 
   return (
-    <AnimalContext.Provider value={{ ...state, dispatch }}>
+    <AnimalContext.Provider value={{ ...state, dispatch, searchAnimal }}>
       {children}
     </AnimalContext.Provider>
   );

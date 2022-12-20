@@ -8,9 +8,6 @@ import NotFound from "./pages/NotFound";
 import Footer from "./components/layout/Footer";
 
 function App() {
-  // const searchAnimal = () => {
-
-  // }
   return (
     <AnimalProvider>
       <BrowserRouter>
