@@ -2,6 +2,9 @@ import { createContext, useReducer } from "react";
 import AnimalReducer from "./AnimalReducer";
 import axios from "axios";
 
+const URL = process.env.REACT_APP_PET_FINDER_URL;
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
+
 const AnimalContext = createContext();
 
 export const AnimalProvider = ({ children }) => {
