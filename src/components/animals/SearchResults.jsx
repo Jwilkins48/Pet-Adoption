@@ -1,15 +1,18 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import AnimalContext from "../../context/AnimalContext";
+import Input from "../layout/Input";
 import AnimalCard from "./AnimalCard";
 
 function SearchResults() {
-  const { animalsArr } = useContext(AnimalContext);
+  //Searched array
+  const { animals } = useContext(AnimalContext);
 
   return (
     <div>
-      {animalsArr.map((item) => (
+      <Input />
+      {animals.map((item) => (
         <div>
-          <AnimalCard key={item.id} item={item} />
+          <AnimalCard key={item.name} item={item} />
         </div>
       ))}
     </div>

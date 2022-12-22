@@ -1,20 +1,20 @@
 import { useContext, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AnimalContext from "../../context/AnimalContext";
 
 function Input() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
 
-  const { animals, dispatch, searchAnimal } = useContext(AnimalContext);
+  const { dispatch, searchAnimal } = useContext(AnimalContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (name === "") {
       alert("Answer");
     } else {
-      // navigate("/search");
-      const animalList = searchAnimal(name);
+      navigate("/search");
+      const animalList = searchAnimal();
       dispatch({ type: "GET_ANIMALS", payload: animalList });
       setName("");
     }
