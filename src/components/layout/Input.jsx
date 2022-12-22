@@ -12,7 +12,7 @@ function Input() {
     if (name === "") {
       alert("Answer");
     } else {
-      navigate("/search");
+      // navigate("/search");
       const animalList = searchAnimal(name);
       dispatch({ type: "GET_ANIMALS", payload: animalList });
       setName("");
