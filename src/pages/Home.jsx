@@ -5,11 +5,10 @@ import Input from "../components/layout/Input";
 
 function Home() {
   return (
-    <div>
+    <div className="w-full">
       {/* <h1>MEET YOUR NEW BEST FRIEND</h1>
       <p>Schedule your meeting today!</p> */}
       <Input />
-      <SearchResults />
     </div>
   );
 }

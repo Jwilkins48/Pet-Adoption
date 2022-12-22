@@ -15,12 +15,13 @@ function App() {
           <div className="navBar-container">
             <Navbar title={"Furry Friends"} />
           </div>
-          <main className="container mx-40 px-3 pb-12">
+          <main className="container flex m-auto justify-center px-3 pb-12">
             <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route path="/search" element={<SearchAnimals />}></Route>
-              <Route path="/animals/:animal" element={<Animal />}></Route>
-              <Route path="/*" element={<NotFound />}></Route>
+              <Route path="/" element={<Home />} />
+              {/* <Route path="/allAnimals" element={<SeeAll />} /> */}
+              <Route path="/search" element={<SearchAnimals />} />
+              <Route path="search/animals/:animal" element={<Animal />} />
+              <Route path="/*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />

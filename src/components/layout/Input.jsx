@@ -14,14 +14,15 @@ function Input() {
       alert("Answer");
     } else {
       navigate("/search");
-      const animalList = searchAnimal();
+      const animalList = searchAnimal(name);
+      console.log(animalList);
       dispatch({ type: "GET_ANIMALS", payload: animalList });
       setName("");
     }
   };
   return (
     <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 mb-8 gap-8">
-      <div>
+      <div className="w-full">
         <form onSubmit={handleSubmit}>
           <div className="form-control">
             <div className="relative">

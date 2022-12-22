@@ -3,7 +3,7 @@ const animalReducer = (state, action) => {
     case "GET_ANIMALS":
       return {
         ...state,
-        animals: action.payload,
+        animalsArray: action.payload,
       };
   }
 };

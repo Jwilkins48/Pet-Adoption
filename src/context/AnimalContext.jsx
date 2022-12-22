@@ -1,10 +1,9 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import AnimalReducer from "./AnimalReducer";
 
 const AnimalContext = createContext();
 const URL = import.meta.env.VITE_PET_FINDER_URL;
 const TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
-import { useState } from "react";
 
 export const AnimalProvider = ({ children }) => {
   const initialState = {
@@ -15,8 +14,8 @@ export const AnimalProvider = ({ children }) => {
   const [animals, setAnimals] = useState([]);
 
   //Fetch petFinder array
-  const searchAnimal = async () => {
-    const response = await fetch(`${URL}/animals`, {
+  const searchAnimal = async (name) => {
+    const response = await fetch(`${URL}/animals?type=${name}`, {
       headers: {
         Authorization: `Bearer ${TOKEN}`,
       },

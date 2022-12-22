@@ -10,11 +10,13 @@ function SearchResults() {
   return (
     <div>
       <Input />
-      {animals.map((item) => (
-        <div>
-          <AnimalCard key={item.name} item={item} />
-        </div>
-      ))}
+      <div className="grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
+        {animals?.map((item) => (
+          <div key={item.id}>
+            <AnimalCard key={item.name} item={item} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
