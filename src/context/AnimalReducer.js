@@ -5,6 +5,11 @@ const animalReducer = (state, action) => {
         ...state,
         animalsArray: action.payload,
       };
+    case "GET_ANIMAL_PROFILE":
+      return {
+        ...state,
+        animalPage: action.payload,
+      };
   }
 };
 

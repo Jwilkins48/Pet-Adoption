@@ -1,7 +1,9 @@
-import React from "react";
+import { useEffect, useContext } from "react";
+import AnimalContext from "../context/AnimalContext";
+import { useParams, Link } from "react-router-dom";
 
 function Animal() {
-  return <div>kitty</div>;
+  <p>animal profile</p>;
 }
 
 export default Animal;

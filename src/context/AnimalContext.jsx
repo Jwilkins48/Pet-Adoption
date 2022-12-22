@@ -26,9 +26,11 @@ export const AnimalProvider = ({ children }) => {
     return data.animals;
   };
 
+  const getAnimalProfile = async (animalsId) => {};
+
   return (
     <AnimalContext.Provider
-      value={{ ...state, dispatch, searchAnimal, animals }}
+      value={{ ...state, dispatch, searchAnimal, animals, getAnimalProfile }}
     >
       {children}
     </AnimalContext.Provider>
