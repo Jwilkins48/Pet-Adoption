@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import paw from "../Assets/paw-prints.png";
 import AnimalContext from "../../context/AnimalContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 function AnimalCard({ item }) {
   let gender = item.gender;
@@ -43,15 +43,12 @@ function AnimalCard({ item }) {
         {/* </div> */}
 
         <div className="card-actions justify-end">
-          <button
-            onClick={() => {
-              navigate(`animals/${item.name}`);
-              console.log(animalsArray);
-            }}
-            className="btn btn-primary"
+          <Link
+            className="text-base-content text-opacity-40"
+            to={`/search/animals/${item.id}`}
           >
-            View Profile
-          </button>
+            Visit Profile
+          </Link>
         </div>
       </div>
     </div>
