@@ -36,9 +36,6 @@ export const AnimalProvider = ({ children }) => {
       },
     });
     const profileData = await response.json();
-
-    // setAnimals(profileData.animal);
-    // return profileData.animal;
     return { animalPage: profileData.animal };
   };
 

@@ -15,7 +15,7 @@ function App() {
           <div className="navBar-container">
             <Navbar title={"Furry Friends"} />
           </div>
-          <main className="container flex m-auto justify-center px-3 pb-12">
+          <main className="container flex m-auto px-3 pb-12">
             <Routes>
               <Route path="/" element={<Home />} />
               {/* <Route path="/allAnimals" element={<SeeAll />} /> */}
