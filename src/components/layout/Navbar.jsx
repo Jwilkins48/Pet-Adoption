@@ -16,8 +16,8 @@ function NavBar({ title }) {
             <Link to="/" className="btn btn-ghost btn-sm">
               Home
             </Link>
-            <Link to="/about" className="btn btn-ghost btn-sm">
-              About
+            <Link to="/wishlist" className="btn btn-ghost btn-sm">
+              <i className=" fa-regular fa-heart text-lg"></i>
             </Link>
           </div>
         </div>

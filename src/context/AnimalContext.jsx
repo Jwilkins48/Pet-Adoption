@@ -4,7 +4,6 @@ import AnimalReducer from "./AnimalReducer";
 const AnimalContext = createContext();
 const URL = import.meta.env.VITE_PET_FINDER_URL;
 const TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
-const PROFILE_URL = import.meta.env.VITE_PROFILE_FINDER;
 
 export const AnimalProvider = ({ children }) => {
   const initialState = {
@@ -14,7 +13,11 @@ export const AnimalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AnimalReducer, initialState);
   const [animals, setAnimals] = useState([]);
 
-  const [animalProf, setAnimalProf] = useState([]);
+  const [wishlistArr, setWishlistArr] = useState([]);
+  const addToWishlist = (wish) => {
+    setWishlistArr([wish, ...wishlistArr]);
+    console.log(wishlistArr);
+  };
 
   //Fetch petFinder array
   const searchAnimal = async (name) => {
@@ -41,7 +44,14 @@ export const AnimalProvider = ({ children }) => {
 
   return (
     <AnimalContext.Provider
-      value={{ ...state, dispatch, searchAnimal, animals, getAnimalProfile }}
+      value={{
+        ...state,
+        animals,
+        dispatch,
+        searchAnimal,
+        getAnimalProfile,
+        addToWishlist,
+      }}
     >
       {children}
     </AnimalContext.Provider>

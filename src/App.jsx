@@ -6,6 +6,7 @@ import SearchAnimals from "./pages/SearchAnimals";
 import Animal from "./pages/Animal";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/layout/Footer";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <main className="container flex m-auto px-3 pb-12">
             <Routes>
               <Route path="/" element={<Home />} />
-              {/* <Route path="/allAnimals" element={<SeeAll />} /> */}
+              <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/search" element={<SearchAnimals />} />
               <Route path="/search/animals/:id" element={<Animal />} />
               <Route path="/*" element={<NotFound />} />

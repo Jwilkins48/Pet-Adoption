@@ -1,16 +1,29 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import paw from "../Assets/paw-prints.png";
 import AnimalContext from "../../context/AnimalContext";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
 function AnimalCard({ item }) {
   let gender = item.gender;
-  const { animalsArray } = useContext(AnimalContext);
+  const { addToWishlist } = useContext(AnimalContext);
+  const handleOnClick = (wish) => {
+    addToWishlist(wish);
+    setWishlist(!wishlist);
+  };
+
+  const [wishlist, setWishlist] = useState(true);
 
   const navigate = useNavigate();
   let petImage = item.photos.length > 0 ? item.photos[0].medium : paw;
   return (
-    <div className="card h-[35rem] w-95 bg-base-100 shadow-xl mt-5">
+    <div className="card h-[35rem] w-95 bg-base-100 shadow-xl mt-5 relative">
+      <button className="" onClick={(e) => handleOnClick([e.target])}>
+        {wishlist ? (
+          <i className="fa-regular fa-heart absolute right-10 badge px-2 py-3 top-3 badge-ghost"></i>
+        ) : (
+          <i className="fa-solid fa-heart absolute right-10 badge  px-2 py-3 top-3 badge-secondary"></i>
+        )}
+      </button>
       <figure className="px-2">
         <img
           className="rounded-xl h-60 w-[18rem]"
