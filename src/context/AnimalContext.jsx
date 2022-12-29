@@ -19,6 +19,10 @@ export const AnimalProvider = ({ children }) => {
     console.log(wishlistArr);
   };
 
+  const removeFromWishlist = (id) => {
+    setWishlistArr(wishlistArr.filter((item) => item.id !== id));
+  };
+
   //Fetch petFinder array
   const searchAnimal = async (name) => {
     const response = await fetch(`${URL}/animals?type=${name}`, {
@@ -47,11 +51,12 @@ export const AnimalProvider = ({ children }) => {
       value={{
         ...state,
         animals,
+        wishlistArr,
         dispatch,
         searchAnimal,
         getAnimalProfile,
         addToWishlist,
-        wishlistArr,
+        removeFromWishlist,
       }}
     >
       {children}

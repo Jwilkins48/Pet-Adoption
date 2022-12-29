@@ -5,7 +5,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 
 function AnimalCard({ item }) {
   let gender = item.gender;
-  const { addToWishlist, wishlistArray } = useContext(AnimalContext);
+  const { addToWishlist, removeFromWishlist } = useContext(AnimalContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,8 +18,13 @@ function AnimalCard({ item }) {
       description: item.description,
       checked: wishlist,
     };
-    addToWishlist(wish);
-    console.log(wishlist);
+    if (wish.checked === true) {
+      addToWishlist(wish);
+    } else {
+      removeFromWishlist(item.id);
+    }
+
+    console.log(wish.checked);
     setWishlist(!wishlist);
   };
 
