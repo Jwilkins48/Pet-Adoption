@@ -10,6 +10,11 @@ const animalReducer = (state, action) => {
         ...state,
         animalPage: action.payload,
       };
+    case "ADD_TO_WISHLIST":
+      return {
+        ...state,
+        wishlistArray: action.payload,
+      };
   }
 };
 

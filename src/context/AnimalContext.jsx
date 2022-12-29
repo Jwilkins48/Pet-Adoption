@@ -51,6 +51,7 @@ export const AnimalProvider = ({ children }) => {
         searchAnimal,
         getAnimalProfile,
         addToWishlist,
+        wishlistArr,
       }}
     >
       {children}
