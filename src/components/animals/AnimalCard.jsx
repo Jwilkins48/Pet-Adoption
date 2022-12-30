@@ -3,6 +3,7 @@ import paw from "../Assets/paw-prints.png";
 import AnimalContext from "../../context/AnimalContext";
 import { useNavigate, Link } from "react-router-dom";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import "animate.css";
 
 function AnimalCard({ item }) {
   let gender = item.gender;
@@ -34,9 +35,9 @@ function AnimalCard({ item }) {
   return (
     <form
       onSubmit={(e) => handleSubmit(e)}
-      className="card h-[35rem] w-95 bg-base-100 shadow-xl mt-5 relative"
+      className="animate__animated animate__fadeInUp card h-[35rem] w-95 bg-base-100 shadow-xl mt-5 relative"
     >
-      <button className="" type="submit">
+      <button type="submit">
         {wishlist ? (
           <i className="fa-regular fa-heart absolute right-10 badge px-2 py-3 top-3 badge-ghost"></i>
         ) : (

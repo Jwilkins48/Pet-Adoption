@@ -7,6 +7,23 @@ body {
   font-family: "Montserrat Alternates", sans-serif;
 }
 
+.animate__animated.animate__fadeInDown.one {
+  --animate-duration: 1s;
+}
+.animate__animated.animate__fadeInDown.two {
+  --animate-duration: 1.25s;
+}
+.animate__animated.animate__fadeInDown.three {
+  --animate-duration: 1.5s;
+}
+.animate__animated.animate__fadeInDown.four {
+  --animate-duration: 1.7s;
+}
+
+.animate__animated.animate__fadeInUp {
+  --animate-duration: 1.5s;
+}
+
 .nav-title {
   font-family: "Exo 2", sans-serif;
   font-size: 28px;
