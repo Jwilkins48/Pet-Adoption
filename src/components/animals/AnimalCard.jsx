@@ -1,18 +1,21 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import paw from "../Assets/paw-prints.png";
 import AnimalContext from "../../context/AnimalContext";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 function AnimalCard({ item }) {
   let gender = item.gender;
   const { addToWishlist, removeFromWishlist } = useContext(AnimalContext);
+  const [wishlist, setWishlist] = useState(true);
+  // const [wishlist, setWishlist] = useLocalStorage("wishlist", true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const wish = {
       id: item.id,
       name: item.name,
-      img: item,
+      img: item.photos,
       gender: item.gender,
       age: item.age,
       description: item.description,
@@ -23,12 +26,8 @@ function AnimalCard({ item }) {
     } else {
       removeFromWishlist(item.id);
     }
-
-    console.log(wish.checked);
     setWishlist(!wishlist);
   };
-
-  const [wishlist, setWishlist] = useState(true);
 
   const navigate = useNavigate();
   let petImage = item.photos.length > 0 ? item.photos[0].medium : paw;

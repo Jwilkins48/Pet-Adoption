@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
 .nav-title {
   font-family: "Exo 2", sans-serif;
   font-size: 28px;

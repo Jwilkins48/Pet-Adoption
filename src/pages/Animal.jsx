@@ -31,10 +31,20 @@ function Animal() {
             alt="animal"
           />
         </figure>
-        <div className="ml-10">
-          <h2 className="card-title">{animalPage.animalPage?.name}</h2>
-          <p className="">{animalPage.animalPage?.breeds.primary}</p>
-          <p className="column">{animalPage.animalPage?.description}</p>
+        <div className="ml-5">
+          <h2 className="text-5xl mb-3 card-title">
+            {animalPage.animalPage?.name}
+          </h2>
+          <div>
+            <p className="badge badge-secondary">
+              {animalPage.animalPage?.breeds.primary}
+            </p>
+            <p className="badge badge-primary ml-2">
+              {animalPage.animalPage?.gender}
+            </p>
+          </div>
+
+          <p className="mt-2">{animalPage.animalPage?.description}</p>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { createContext, useReducer, useState } from "react";
 import AnimalReducer from "./AnimalReducer";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const AnimalContext = createContext();
 const URL = import.meta.env.VITE_PET_FINDER_URL;
@@ -11,9 +12,9 @@ export const AnimalProvider = ({ children }) => {
     animalPage: {},
   };
   const [state, dispatch] = useReducer(AnimalReducer, initialState);
-  const [animals, setAnimals] = useState([]);
+  const [animals, setAnimals] = useLocalStorage("animals", []);
+  const [wishlistArr, setWishlistArr] = useLocalStorage("wishlistArr", []);
 
-  const [wishlistArr, setWishlistArr] = useState([]);
   const addToWishlist = (wish) => {
     setWishlistArr([wish, ...wishlistArr]);
     console.log(wishlistArr);
