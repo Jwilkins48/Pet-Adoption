@@ -4,7 +4,7 @@ import Input from "../components/layout/Input";
 
 function About() {
   return (
-    <div className="w-full">
+    <div className="w-full search">
       <SearchResults />
     </div>
   );

@@ -5,8 +5,21 @@
 
 body {
   font-family: "Montserrat Alternates", sans-serif;
+  background-image: url("./components/Assets/background.jpg");
+  background-size: cover;
 }
 
+.word {
+  line-height: 80px;
+  font-weight: bold;
+  color: #5f4e80;
+}
+.customBlue {
+  background-color: #c6f6fab4;
+}
+.customPink {
+  background-color: #fad3e2b4;
+}
 .animate__animated.animate__fadeInDown.one {
   --animate-duration: 1s;
 }
