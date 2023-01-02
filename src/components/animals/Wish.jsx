@@ -10,7 +10,7 @@ function Wish({ item }) {
   const { removeFromWishlist } = useContext(AnimalContext);
 
   return (
-    <form className="card h-[35rem] w-95 bg-base-100 shadow-xl mt-5 relative">
+    <form className="card h-[35rem] pt-5 w-95 bg-base-100 shadow-xl mt-5 relative">
       <button onClick={() => removeFromWishlist(item.id)}>
         <i className="fa-solid fa-heart absolute right-10 badge  px-2 py-3 top-3 badge-secondary"></i>
       </button>
