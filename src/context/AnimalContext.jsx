@@ -15,6 +15,13 @@ export const AnimalProvider = ({ children }) => {
   const [animals, setAnimals] = useLocalStorage("animals", []);
   const [wishlistArr, setWishlistArr] = useLocalStorage("wishlistArr", []);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(8);
+  const lastPostIndex = currentPage * postPerPage;
+  const firstPostIndex = lastPostIndex - postPerPage;
+  const currentPost = animals.slice(firstPostIndex, lastPostIndex);
+  const totalPosts = animals.length;
+
   const addToWishlist = (wish) => {
     setWishlistArr([wish, ...wishlistArr]);
     console.log(wishlistArr);
@@ -51,9 +58,14 @@ export const AnimalProvider = ({ children }) => {
     <AnimalContext.Provider
       value={{
         ...state,
-        animals,
+        // animals,
+        totalPosts,
+        currentPost,
         wishlistArr,
+        postPerPage,
+        currentPage,
         dispatch,
+        setCurrentPage,
         searchAnimal,
         getAnimalProfile,
         addToWishlist,

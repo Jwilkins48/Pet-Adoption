@@ -8,18 +8,24 @@ body {
   background-image: url("./components/Assets/background.jpg");
   background-size: cover;
 }
-
+/* TITLES */
+.nav-title {
+  font-family: "Exo 2", sans-serif;
+  font-size: 28px;
+}
 .word {
   line-height: 80px;
   font-weight: bold;
   color: #5f4e80;
 }
+/* HOME BUTTONS */
 .customBlue {
   background-color: #c6f6fab4;
 }
 .customPink {
   background-color: #fad3e2b4;
 }
+/* ANIMATIONS */
 .animate__animated.animate__fadeInDown.one {
   --animate-duration: 1s;
 }
@@ -35,9 +41,4 @@ body {
 
 .animate__animated.animate__fadeInUp {
   --animate-duration: 1.5s;
-}
-
-.nav-title {
-  font-family: "Exo 2", sans-serif;
-  font-size: 28px;
 }

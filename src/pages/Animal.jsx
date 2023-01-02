@@ -65,7 +65,7 @@ function Animal() {
           <h2 className="text-5xl mb-3 card-title">
             {animalPage.animalPage?.name}
             <button
-              className=" absolute left-[15.5rem] top-[-3px]"
+              className=" absolute right-0 top-0"
               onClick={(e) => onClick(e)}
             >
               {profileWishlist ? (

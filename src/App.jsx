@@ -12,11 +12,11 @@ function App() {
   return (
     <AnimalProvider>
       <BrowserRouter>
-        <div className=" flex flex-col justify-between h-screen">
+        <div className=" flex flex-col justify-between min-h-screen">
           <div className="navBar-container">
             <Navbar title={"Furry Friends"} />
           </div>
-          <main className="container flex m-auto px-3 pb-12">
+          <main className="container relative flex m-auto px-3 pb-12">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/wishlist" element={<Wishlist />} />
