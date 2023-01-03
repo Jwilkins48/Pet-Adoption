@@ -118,8 +118,8 @@ function Animal() {
             )}
           </div>
 
-          <div className="card bg-blue-200 shadow-xl h-[25%] w-[28%] items-center flex justify-center absolute left-40 bottom-20 ">
-            <div className="card-title text-orange-400 mb-4 underline ">
+          <div className="card bg-indigo-200 shadow-lg h-[25%] w-[28%] items-center flex justify-center absolute left-40 bottom-[4rem] border-2 border-orange-200 ">
+            <div className="card-title text-orange-400 mb-3 text-2xl ">
               Interested?
             </div>
             <button className="p-2 px-3 rounded-xl shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100">
@@ -144,34 +144,47 @@ function Animal() {
             <h1 className="text-2xl font-bold mb-2 underline text-orange-400">
               Personality
             </h1>
-            <p className="grid grid-cols-2 mb-1">
+            <p className="grid grid-cols-2">
               {animalPage.animalPage?.tags.map((item) => (
                 <li>{item}</li>
               ))}
             </p>
 
-            <div className="grid grid-cols-2 mt-3">
-              <p className="">
+            <div className="grid grid-cols-2">
+              <li
+                className={
+                  animalPage.animalPage?.environment.cats ? "" : "list-none"
+                }
+              >
                 {animalPage.animalPage?.environment.cats
-                  ? "I love being with cats!"
+                  ? "I love cats"
                   : "I'm not a big fan of cats"
                   ? animalPage.animalPage?.environment.dogs == null
                   : ""}
-              </p>
-              <p className="">
+              </li>
+
+              <li
+                className={
+                  animalPage.animalPage?.environment.children ? "" : "list-none"
+                }
+              >
                 {animalPage.animalPage?.environment.children
                   ? "I love kids!"
                   : "I'm a little afraid of kids"
                   ? animalPage.animalPage?.environment.dogs == null
                   : ""}
-              </p>
-              <p className="">
+              </li>
+              <li
+                className={
+                  animalPage.animalPage?.environment.dogs ? "" : "list-none"
+                }
+              >
                 {animalPage.animalPage?.environment.dogs
                   ? "I get along with dogs too!"
                   : "I'm not a big fan of dogs"
                   ? animalPage.animalPage?.environment.dogs == null
                   : ""}
-              </p>
+              </li>
             </div>
           </div>
 
@@ -207,7 +220,7 @@ function Animal() {
                 <span className="text-indigo-500 font-bold">
                   {animalPage.animalPage?.attributes.spayed_neutered
                     ? " been spayed/neutered"
-                    : " not yet spayed/neutered"}
+                    : " not yet been spayed/neutered"}
                 </span>
               </p>
 
