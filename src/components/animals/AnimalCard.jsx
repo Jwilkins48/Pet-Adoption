@@ -60,11 +60,7 @@ function AnimalCard({ item }) {
         <div className="flex items-center">
           <h2
             style={{ fontSize: nameSize > 10 ? "13px" : "" }}
-            className={
-              nameSize >= 25
-                ? "max-h-20 overflow-hidden card-title"
-                : "card-title"
-            }
+            className={nameSize >= 25 ? "truncate card-title" : "card-title"}
           >
             {item.name}
           </h2>
