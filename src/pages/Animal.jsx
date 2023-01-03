@@ -1,6 +1,6 @@
 import { useEffect, useContext, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import AnimalContext from "../context/AnimalContext";
 import paw from "../components/Assets/paw-prints.png";
 import Flickity from "react-flickity-component";
@@ -56,6 +56,7 @@ function Animal() {
     initialIndex: 1,
     wrapAround: true,
   };
+  const navigate = useNavigate();
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-8 bg-indigo-100 h-[75vh] w-full rounded-lg p-5 border-2 border-blue-300 relative">
@@ -116,6 +117,21 @@ function Animal() {
               </figure>
             )}
           </div>
+
+          <div className="card bg-blue-200 shadow-xl h-[25%] w-[28%] items-center flex justify-center absolute left-40 bottom-20 ">
+            <div className="card-title text-orange-400 mb-4 underline ">
+              Interested?
+            </div>
+            <button className="p-2 px-3 rounded-xl shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100">
+              Start Your Inquiry
+            </button>
+            <button
+              onClick={() => navigate("/")}
+              className="py-2 px-5 rounded-xl mt-4 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
+            >
+              Return To Home
+            </button>
+          </div>
         </div>
       </div>
 
@@ -125,58 +141,82 @@ function Animal() {
         </h2>
         <div className="m-10">
           <div>
-            <h1 className="text-2xl mb-2 underline">Personality</h1>
-            <p className="">
-              {animalPage.animalPage?.tags.map((x) => `${x} `)}
+            <h1 className="text-2xl font-bold mb-2 underline text-orange-400">
+              Personality
+            </h1>
+            <p className="grid grid-cols-2 mb-1">
+              {animalPage.animalPage?.tags.map((item) => (
+                <li>{item}</li>
+              ))}
             </p>
-            <p className="">
-              {animalPage.animalPage?.environment.cats
-                ? "I love being with cats!"
-                : "I'm not a big fan of cats"
-                ? animalPage.animalPage?.environment.dogs == null
-                : ""}
-            </p>
-            <p className="">
-              {animalPage.animalPage?.environment.children
-                ? "I love kids!"
-                : "I'm a little afraid of kids"
-                ? animalPage.animalPage?.environment.dogs == null
-                : ""}
-            </p>
-            <p className="">
-              {animalPage.animalPage?.environment.dogs
-                ? "I get along with dogs too!"
-                : "I'm not a big fan of dogs"
-                ? animalPage.animalPage?.environment.dogs == null
-                : ""}
-            </p>
+
+            <div className="grid grid-cols-2 mt-3">
+              <p className="">
+                {animalPage.animalPage?.environment.cats
+                  ? "I love being with cats!"
+                  : "I'm not a big fan of cats"
+                  ? animalPage.animalPage?.environment.dogs == null
+                  : ""}
+              </p>
+              <p className="">
+                {animalPage.animalPage?.environment.children
+                  ? "I love kids!"
+                  : "I'm a little afraid of kids"
+                  ? animalPage.animalPage?.environment.dogs == null
+                  : ""}
+              </p>
+              <p className="">
+                {animalPage.animalPage?.environment.dogs
+                  ? "I get along with dogs too!"
+                  : "I'm not a big fan of dogs"
+                  ? animalPage.animalPage?.environment.dogs == null
+                  : ""}
+              </p>
+            </div>
+          </div>
+
+          <div className="divider">
+            <i class="fa-solid fa-paw"></i>
           </div>
 
           <div>
-            <h1 className="text-2xl mb-2 underline">Details</h1>
-            <p className="">
-              {animalPage.animalPage?.attributes.house_trained
-                ? "House Trained"
-                : "Not yet house trained"}
-            </p>
+            <h1 className="text-2xl underline text-orange-400 font-bold">
+              Details
+            </h1>
+            <div className="flex flex-col justify-between h-[10rem]	 mt-3">
+              <p className="">
+                {animalPage.animalPage?.name} is
+                <span className="text-indigo-500 font-bold">
+                  {animalPage.animalPage?.attributes.house_trained
+                    ? " house trained"
+                    : " not yet house trained"}
+                </span>
+              </p>
 
-            <p className="">
-              {animalPage.animalPage?.attributes.shots_current
-                ? "Up to date on shots"
-                : "In need on shots"}
-            </p>
+              <p className="">
+                Vaccines/shots are
+                <span className="text-indigo-500 font-bold">
+                  {animalPage.animalPage?.attributes.shots_current
+                    ? " fully up to date!"
+                    : " not yet up to date."}
+                </span>
+              </p>
 
-            <p className="">
-              {animalPage.animalPage?.attributes.spayed_neutered
-                ? "Spayed/Neutered"
-                : "Not yet spayed/neutered"}
-            </p>
+              <p className="">
+                {animalPage.animalPage?.name} has
+                <span className="text-indigo-500 font-bold">
+                  {animalPage.animalPage?.attributes.spayed_neutered
+                    ? " been spayed/neutered"
+                    : " not yet spayed/neutered"}
+                </span>
+              </p>
 
-            <p className="">
-              {animalPage.animalPage?.attributes.special_needs
-                ? "Special Needs"
-                : ""}
-            </p>
+              <p className="">
+                {animalPage.animalPage?.attributes.special_needs
+                  ? "Special Needs"
+                  : ""}
+              </p>
+            </div>
           </div>
         </div>
       </div>
