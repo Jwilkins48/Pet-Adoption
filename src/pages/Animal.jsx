@@ -53,7 +53,7 @@ function Animal() {
   }, [dispatch, params.id]);
 
   const flickityOptions = {
-    initialIndex: 2,
+    initialIndex: 1,
     wrapAround: true,
   };
 
@@ -119,35 +119,65 @@ function Animal() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg">
-        <h2 className="font-bold mt-10 text-3xl text-indigo-500 underline">
+      <div className="bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg">
+        <h2 className="font-bold mt-10 text-3xl text-indigo-500 underline text-center">
           A Little About Me...
         </h2>
         <div className="m-10">
-          <h1 className="text-2xl mb-2 underline">Personality</h1>
-          <p className="">
-            {animalPage.animalPage?.attributes.house_trained
-              ? "House Trained"
-              : "Not yet house trained"}
-          </p>
+          <div>
+            <h1 className="text-2xl mb-2 underline">Personality</h1>
+            <p className="">
+              {animalPage.animalPage?.tags.map((x) => `${x} `)}
+            </p>
+            <p className="">
+              {animalPage.animalPage?.environment.cats
+                ? "I love being with cats!"
+                : "I'm not a big fan of cats"
+                ? animalPage.animalPage?.environment.dogs == null
+                : ""}
+            </p>
+            <p className="">
+              {animalPage.animalPage?.environment.children
+                ? "I love kids!"
+                : "I'm a little afraid of kids"
+                ? animalPage.animalPage?.environment.dogs == null
+                : ""}
+            </p>
+            <p className="">
+              {animalPage.animalPage?.environment.dogs
+                ? "I get along with dogs too!"
+                : "I'm not a big fan of dogs"
+                ? animalPage.animalPage?.environment.dogs == null
+                : ""}
+            </p>
+          </div>
 
-          <p className="">
-            {animalPage.animalPage?.attributes.shots_current
-              ? "Up to date on shots"
-              : "In need on shots"}
-          </p>
+          <div>
+            <h1 className="text-2xl mb-2 underline">Details</h1>
+            <p className="">
+              {animalPage.animalPage?.attributes.house_trained
+                ? "House Trained"
+                : "Not yet house trained"}
+            </p>
 
-          <p className="">
-            {animalPage.animalPage?.attributes.spayed_neutered
-              ? "Spayed/Neutered"
-              : "Not yet spayed/neutered"}
-          </p>
+            <p className="">
+              {animalPage.animalPage?.attributes.shots_current
+                ? "Up to date on shots"
+                : "In need on shots"}
+            </p>
 
-          <p className="">
-            {animalPage.animalPage?.attributes.special_needs
-              ? "Special Needs"
-              : ""}
-          </p>
+            <p className="">
+              {animalPage.animalPage?.attributes.spayed_neutered
+                ? "Spayed/Neutered"
+                : "Not yet spayed/neutered"}
+            </p>
+
+            <p className="">
+              {animalPage.animalPage?.attributes.special_needs
+                ? "Special Needs"
+                : ""}
+            </p>
+          </div>
         </div>
       </div>
     </div>
