@@ -126,25 +126,28 @@ function Animal() {
               </span>
               ?
             </div>
-            <div className="justify-around w-full flex">
+            <div className="justify-evenly w-full flex">
               <button
                 onClick={(e) => onClick(e)}
                 className="py-2 px-5 rounded-xl mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
               >
                 Add To Wishlist <i className="fa-regular fa-heart px-2 py-3" />
               </button>
+              <div className="divider">
+                <i class="fa-solid fa-worm text-indigo-400"></i>
+              </div>
               <label
                 htmlFor="adopt-modal"
-                className="py-2 cursor-pointer flex items-center px-7 rounded-xl mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
+                className="py-2 cursor-pointer flex items-center px-10 rounded-xl mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
               >
                 Begin Inquiry
               </label>
-              <button
+              {/* <button
                 onClick={() => navigate("/")}
                 className="py-2  px-7 rounded-xl mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
               >
                 Return Home
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
