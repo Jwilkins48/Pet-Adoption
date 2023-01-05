@@ -7,6 +7,7 @@ import Animal from "./pages/Animal";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/layout/Footer";
 import Wishlist from "./pages/Wishlist";
+import Inquiry from "./pages/Inquiry";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/search" element={<SearchAnimals />} />
+              <Route path="/adoptionRequest" element={<Inquiry />} />
               <Route path="/search/animals/:id" element={<Animal />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>

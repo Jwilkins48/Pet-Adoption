@@ -8,7 +8,7 @@ function NavBar({ title }) {
         <div>
           {/* Link to home */}
           <Link to="/" className="text-xl font-bold text-blue-500 nav-title">
-            {title} <i class="fa-solid fa-paw text-orange-300"></i>
+            {title} <i className="fa-solid fa-paw text-orange-300"></i>
           </Link>
         </div>
         <div className="flex-1">

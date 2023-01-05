@@ -15,7 +15,7 @@ function Animal() {
   } = useContext(AnimalContext);
   const [profileWishlist, setProfileWishlist] = useLocalStorage(
     "profileWishlist",
-    true
+    false
   );
   const params = useParams();
 
@@ -118,18 +118,122 @@ function Animal() {
             )}
           </div>
 
-          <div className="card bg-indigo-200 shadow-lg h-[25%] w-[28%] items-center flex justify-center absolute left-40 bottom-[4rem] border-2 border-orange-200 ">
-            <div className="card-title text-orange-400 mb-3 text-2xl ">
-              Interested?
+          <div className="card bg-indigo-200 shadow-lg h-[25%] w-[43%] items-center flex justify-center absolute  bottom-[4rem] border-2 border-orange-200 ">
+            <div className="card-title text-orange-100  mb-6 text-2xl ">
+              Interested in{" "}
+              <span className="text-indigo-400">
+                {animalPage.animalPage?.name}
+              </span>
+              ?
             </div>
-            <button className="p-2 px-3 rounded-xl shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100">
-              Start Your Inquiry
-            </button>
-            <button
-              onClick={() => navigate("/")}
-              className="py-2 px-5 rounded-xl mt-4 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
+            <div className="justify-around w-full flex">
+              <button
+                onClick={(e) => onClick(e)}
+                className="py-2 px-5 rounded-xl mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
+              >
+                Add To Wishlist <i className="fa-regular fa-heart px-2 py-3" />
+              </button>
+              <label
+                htmlFor="adopt-modal"
+                className="py-2 cursor-pointer flex items-center px-7 rounded-xl mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
+              >
+                Begin Inquiry
+              </label>
+              <button
+                onClick={() => navigate("/")}
+                className="py-2  px-7 rounded-xl mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
+              >
+                Return Home
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ADOPT MODAL */}
+      <input type="checkbox" id="adopt-modal" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box p-6 border-2 border-indigo-400">
+          <h1 className="font-bold mb-5">Adoption Request</h1>
+          <div className="flex flex-col items-start gap-1">
+            <label htmlFor="name">Name</label>
+            <input
+              className="w-[90%] rounded-lg p-1 border-2 border-indigo-200"
+              type="text"
+              name="name"
+              id="name"
+            />
+
+            <label htmlFor="email">Email</label>
+            <input
+              className="w-[90%] rounded-lg p-1 border-2 border-indigo-200"
+              type="email"
+              name="email"
+              id="email"
+            />
+
+            <label htmlFor="number">Phone Number</label>
+            <input
+              className="w-[40%] rounded-lg p-1 border-2 border-indigo-200"
+              placeholder="(555)-555-5555"
+              type="number"
+              name="number"
+              id="number"
+            />
+
+            <label htmlFor="description">Description of household</label>
+            <input
+              className="w-[80%] h-40 rounded-lg p-1 border-2 border-indigo-200"
+              type="text"
+              name="description"
+              id="description"
+            />
+
+            <div className="flex w-full mt-2">
+              <label>Current animals in household?</label>
+
+              <div className="ml-5 gap-3 flex">
+                <label htmlFor="yes">Yes</label>
+                <input
+                  id="yes"
+                  type="radio"
+                  name="radio-5"
+                  className=" radio-primary"
+                />
+
+                <label htmlFor="no">No</label>
+                <input
+                  id="no"
+                  type="radio"
+                  name="radio-5"
+                  className=" radio-primary"
+                />
+              </div>
+            </div>
+
+            <div className="grid mt-2">
+              <label>If yes, which other animals do you own?</label>
+              <input
+                id="no"
+                type="text"
+                className="w-[100%] mt-2 rounded-lg p-1 border-2 border-indigo-200"
+                placeholder=""
+              />
+            </div>
+          </div>
+
+          <div className="modal-action">
+            <label
+              className="btn shadow-lg bg-[#fed7aa] border-transparent hover:bg-[#fdba74] hover:text-black hover:shadow-xl hover:border-transparent btn-outline"
+              htmlFor="adopt-modal"
             >
-              Return To Home
+              Close
+            </label>
+            <button
+              className="btn shadow-lg bg-[#c7d2fe] border-transparent hover:bg-[#a5b4fc] hover:text-black hover:shadow-xl hover:border-transparent btn-outline"
+              onClick={() => navigate("/adoptionRequest")}
+            >
+              Send
             </button>
           </div>
         </div>
@@ -145,8 +249,8 @@ function Animal() {
               Personality
             </h1>
             <p className="grid grid-cols-2">
-              {animalPage.animalPage?.tags.map((item) => (
-                <li>{item}</li>
+              {animalPage.animalPage?.tags.map((item, index) => (
+                <li key={index}>{item}</li>
               ))}
             </p>
 
@@ -189,7 +293,7 @@ function Animal() {
           </div>
 
           <div className="divider">
-            <i class="fa-solid fa-paw"></i>
+            <i className="fa-solid fa-paw"></i>
           </div>
 
           <div>
