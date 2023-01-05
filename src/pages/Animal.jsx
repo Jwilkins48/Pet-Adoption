@@ -30,7 +30,7 @@ function Animal() {
       description: animalPage.animalPage.description,
       checked: profileWishlist,
     };
-    if (wish.checked === true) {
+    if (wish.checked === false) {
       addToWishlist(wish);
     } else {
       removeFromWishlist(animalPage.animalPage.id);
@@ -71,9 +71,9 @@ function Animal() {
                 onClick={(e) => onClick(e)}
               >
                 {profileWishlist ? (
-                  <i className="fa-regular fa-heart absolute right-10 badge px-2 py-3 top-3 badge-outline badge-secondary"></i>
-                ) : (
                   <i className="fa-solid fa-heart absolute right-10 badge  px-2 py-3 top-3 badge-secondary"></i>
+                ) : (
+                  <i className="fa-regular fa-heart absolute right-10 badge px-2 py-3 top-3 badge-outline badge-secondary"></i>
                 )}
               </button>
             </h2>
@@ -142,12 +142,6 @@ function Animal() {
               >
                 Begin Inquiry
               </label>
-              {/* <button
-                onClick={() => navigate("/")}
-                className="py-2  px-7 rounded-xl mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
-              >
-                Return Home
-              </button> */}
             </div>
           </div>
         </div>
