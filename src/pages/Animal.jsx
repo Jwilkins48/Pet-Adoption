@@ -58,6 +58,10 @@ function Animal() {
   };
   const navigate = useNavigate();
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [description, setDescription] = useState("");
+
   return (
     <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-8 bg-indigo-100 h-[75vh] w-full rounded-lg p-5 border-2 border-blue-300 relative">
       <div className="flex">
@@ -149,12 +153,13 @@ function Animal() {
 
       {/* ADOPT MODAL */}
       <input type="checkbox" id="adopt-modal" className="modal-toggle" />
-      <div className="modal">
+      <form className="modal" onSubmit={() => navigate("/adoptionRequest")}>
         <div className="modal-box p-6 border-2 border-indigo-400">
           <h1 className="font-bold mb-5">Adoption Request</h1>
           <div className="flex flex-col items-start gap-1">
             <label htmlFor="name">Name</label>
             <input
+              required
               className="w-[90%] rounded-lg p-1 border-2 border-indigo-200"
               type="text"
               name="name"
@@ -163,6 +168,7 @@ function Animal() {
 
             <label htmlFor="email">Email</label>
             <input
+              required
               className="w-[90%] rounded-lg p-1 border-2 border-indigo-200"
               type="email"
               name="email"
@@ -171,6 +177,7 @@ function Animal() {
 
             <label htmlFor="number">Phone Number</label>
             <input
+              required
               className="w-[40%] rounded-lg p-1 border-2 border-indigo-200"
               placeholder="(555)-555-5555"
               type="number"
@@ -180,6 +187,7 @@ function Animal() {
 
             <label htmlFor="description">Description of household</label>
             <input
+              required
               className="w-[80%] h-40 rounded-lg p-1 border-2 border-indigo-200"
               type="text"
               name="description"
@@ -192,6 +200,7 @@ function Animal() {
               <div className="ml-5 gap-3 flex">
                 <label htmlFor="yes">Yes</label>
                 <input
+                  required
                   id="yes"
                   type="radio"
                   name="radio-5"
@@ -228,13 +237,14 @@ function Animal() {
             </label>
             <button
               className="btn shadow-lg bg-[#c7d2fe] border-transparent hover:bg-[#a5b4fc] hover:text-black hover:shadow-xl hover:border-transparent btn-outline"
-              onClick={() => navigate("/adoptionRequest")}
+              type="submit"
             >
               Send
             </button>
           </div>
         </div>
-      </div>
+      </form>
+      {/* END MODAL */}
 
       <div className="bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg">
         <h2 className="font-bold mt-10 text-3xl text-indigo-500 underline text-center">

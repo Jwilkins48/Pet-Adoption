@@ -6,7 +6,7 @@ import AnimalCard from "./AnimalCard";
 
 function SearchResults() {
   //Searched array
-  const { currentPost } = useContext(AnimalContext); //animals
+  const { currentPost } = useContext(AnimalContext);
 
   return (
     <div>
