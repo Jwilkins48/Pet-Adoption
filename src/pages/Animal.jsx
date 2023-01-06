@@ -6,19 +6,19 @@ import paw from "../components/Assets/paw-prints.png";
 import Flickity from "react-flickity-component";
 
 function Animal() {
+  const params = useParams();
+  const navigate = useNavigate();
+
   const {
     animalPage,
     getAnimalProfile,
     dispatch,
     addToWishlist,
     removeFromWishlist,
+    uniqueWishlist,
   } = useContext(AnimalContext);
-  const [profileWishlist, setProfileWishlist] = useLocalStorage(
-    "profileWishlist",
-    false
-  );
-  const params = useParams();
 
+  //Send to wishlist array
   const onClick = (e) => {
     e.preventDefault();
     const wish = {
@@ -38,11 +38,13 @@ function Animal() {
     setProfileWishlist(!profileWishlist);
   };
 
+  // Default img if none
   let petImage =
     animalPage.animalPage?.photos.length > 0
       ? animalPage.animalPage?.photos[0].medium
       : paw;
 
+  // Display fetch results
   useEffect(() => {
     const getAnimalData = async () => {
       const animalData = await getAnimalProfile(params.id);
@@ -56,11 +58,19 @@ function Animal() {
     initialIndex: 1,
     wrapAround: true,
   };
-  const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [description, setDescription] = useState("");
+  //Check if in wishlist array
+  const isFound = uniqueWishlist.some((element) => {
+    if (element.id === animalPage.animalPage?.id) {
+      return true;
+    }
+    return false;
+  });
+
+  const [profileWishlist, setProfileWishlist] = useLocalStorage(
+    "profileWishlist",
+    isFound
+  );
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-8 bg-indigo-100 h-[75vh] w-full rounded-lg p-5 border-2 border-blue-300 relative">
@@ -74,7 +84,7 @@ function Animal() {
                 className=" absolute right-5 top-6"
                 onClick={(e) => onClick(e)}
               >
-                {profileWishlist ? (
+                {isFound ? (
                   <i className="fa-solid fa-heart absolute right-10 badge  px-2 py-3 top-3 badge-secondary"></i>
                 ) : (
                   <i className="fa-regular fa-heart absolute right-10 badge px-2 py-3 top-3 badge-outline badge-secondary"></i>
@@ -114,13 +124,14 @@ function Animal() {
             ) : (
               <figure>
                 <img
-                  className="max-w-xs rounded-lg shadow-xl"
+                  className="max-w-xs rounded-lg shadow-xl max-h-80 mx-auto"
                   src={petImage}
                   alt="animal"
                 />
               </figure>
             )}
           </div>
+          {/* CAROUSEL END */}
 
           <div className="card bg-indigo-200 shadow-lg h-[25%] w-[43%] items-center flex justify-center absolute  bottom-[4rem] border-2 border-orange-200 ">
             <div className="card-title text-orange-100  mb-6 text-2xl ">
@@ -186,9 +197,9 @@ function Animal() {
             />
 
             <label htmlFor="description">Description of household</label>
-            <input
+            <textarea
               required
-              className="w-[80%] h-40 rounded-lg p-1 border-2 border-indigo-200"
+              className="w-[80%] h-40 rounded-lg p-1 border-2 border-indigo-200 resize-none	"
               type="text"
               name="description"
               id="description"

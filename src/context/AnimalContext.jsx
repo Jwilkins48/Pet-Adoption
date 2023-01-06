@@ -10,6 +10,7 @@ export const AnimalProvider = ({ children }) => {
   const initialState = {
     animalsArray: [],
     animalPage: {},
+    inWishlist: [],
   };
   const [state, dispatch] = useReducer(AnimalReducer, initialState);
   const [animals, setAnimals] = useLocalStorage("animals", []);
@@ -54,14 +55,20 @@ export const AnimalProvider = ({ children }) => {
     return { animalPage: profileData.animal };
   };
 
+  //remove duplicates
+  let uniqueWishlist = Array.from(new Set(wishlistArr.map((a) => a.id))).map(
+    (id) => {
+      return wishlistArr.find((a) => a.id === id);
+    }
+  );
+
   return (
     <AnimalContext.Provider
       value={{
         ...state,
-        // animals,
         totalPosts,
         currentPost,
-        wishlistArr,
+        uniqueWishlist,
         postPerPage,
         currentPage,
         dispatch,

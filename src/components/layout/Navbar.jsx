@@ -1,7 +1,10 @@
-import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import AnimalContext from "../../context/AnimalContext";
 
 function NavBar({ title }) {
+  const { uniqueWishlist } = useContext(AnimalContext);
+
   return (
     <nav className="navbar mb-10 py-7 pt-8 shadow-lg bg-primary">
       <div className="container lg:mx-40 mr-5 ">
@@ -16,8 +19,11 @@ function NavBar({ title }) {
             <Link to="/" className="btn  text-indigo-500 btn-ghost btn-sm">
               Home
             </Link>
-            <Link to="/wishlist" className="btn btn-ghost btn-sm">
-              <i className=" fa-regular  text-red-400 fa-heart text-lg"></i>
+            <Link to="/wishlist" className="btn btn-ghost btn-sm indicator">
+              <span className="indicator-item text-indigo-500 mr-1 mt-1 ">
+                {uniqueWishlist.length}
+              </span>
+              <i className=" fa-regular  text-red-400 fa-heart text-xl"></i>
             </Link>
           </div>
         </div>

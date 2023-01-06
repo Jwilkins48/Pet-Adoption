@@ -8,9 +8,17 @@ import "animate.css";
 function AnimalCard({ item }) {
   let gender = item.gender;
   let nameSize = item.name.length;
-  const { addToWishlist, removeFromWishlist } = useContext(AnimalContext);
+  const { addToWishlist, removeFromWishlist, uniqueWishlist } =
+    useContext(AnimalContext);
   const [wishlist, setWishlist] = useState(false);
-  // const [wishlist, setWishlist] = useLocalStorage("wishlist", false);
+
+  //Check if object is in wishlist array
+  const isFound = uniqueWishlist.some((element) => {
+    if (element.id === item.id) {
+      return true;
+    }
+    return false;
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +36,6 @@ function AnimalCard({ item }) {
       addToWishlist(wish);
     } else {
       item.clicked = false;
-
       removeFromWishlist(item.id);
     }
     setWishlist(!wishlist);
@@ -42,7 +49,7 @@ function AnimalCard({ item }) {
       className="animate__animated animate__fadeIn card h-[36rem] w-95 bg-base-100 shadow-xl mt-5 relative"
     >
       <button type="submit">
-        {wishlist === true ? (
+        {isFound === true ? (
           <i className="fa-solid fa-heart absolute right-10 badge  px-2 py-3 top-3 badge-secondary"></i>
         ) : (
           <i className="fa-regular fa-heart absolute right-10 badge px-2 py-3 top-3 badge-ghost"></i>
