@@ -23,6 +23,8 @@ export const AnimalProvider = ({ children }) => {
   const currentPost = animals.slice(firstPostIndex, lastPostIndex);
   const totalPosts = animals.length;
 
+  const [sort, setSort] = useState("DEFAULT");
+
   const addToWishlist = (wish) => {
     setWishlistArr([wish, ...wishlistArr]);
     console.log(wishlistArr);
@@ -71,7 +73,9 @@ export const AnimalProvider = ({ children }) => {
         uniqueWishlist,
         postPerPage,
         currentPage,
+        sort,
         dispatch,
+        setSort,
         setCurrentPage,
         searchAnimal,
         getAnimalProfile,
