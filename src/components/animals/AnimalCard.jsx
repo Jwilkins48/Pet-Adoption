@@ -45,7 +45,7 @@ function AnimalCard({ item }) {
   return (
     <form
       onSubmit={(e) => handleSubmit(e)}
-      className="animate__animated animate__fadeIn card h-[36rem] w-95 bg-base-100 shadow-xl mt-5 relative"
+      className="animate__animated animate__fadeIn card h-[36rem] w-95 bg-base-100 shadow-xl my-2 relative"
     >
       <button type="submit">
         {isFound === true ? (
