@@ -11,7 +11,7 @@ function Input() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (name === "") {
-      alert("Answer");
+      alert("Please insert animal");
     } else {
       navigate("/search");
       const animalList = searchAnimal(name);

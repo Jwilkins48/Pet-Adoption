@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import paw from "../Assets/paw-prints.png";
 import AnimalContext from "../../context/AnimalContext";
 import { useNavigate, Link } from "react-router-dom";
-import useLocalStorage from "../../hooks/useLocalStorage";
 import "animate.css";
 
 function AnimalCard({ item }) {

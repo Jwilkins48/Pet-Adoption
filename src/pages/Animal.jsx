@@ -73,27 +73,27 @@ function Animal() {
   );
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-8 bg-indigo-100 h-[75vh] w-full rounded-lg p-5 border-2 border-blue-300 relative">
-      <div className="flex">
+    <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-8 bg-indigo-100 lg:h-[75vh] w-full rounded-lg p-5 border-2 border-blue-300 relative h-auto ">
+      <div className="flex items-center justify-center lg:justify-start lg:items-start">
         <div className="ml-5">
           <span>Meet</span>
           <div className="flex items-center gap-5">
-            <h2 className="text-5xl mb-3 card-title text-red-300 ">
+            <h2 className="lg:text-5xl text-4xl mb-6 lg:mb-3 card-title text-red-300 ">
               {animalPage.animalPage?.name}
               <button
                 className=" absolute right-5 top-6"
                 onClick={(e) => onClick(e)}
               >
                 {isFound ? (
-                  <i className="fa-solid fa-heart absolute right-10 badge  px-2 py-3 top-3 badge-secondary"></i>
+                  <i className="fa-solid fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3 badge-secondary"></i>
                 ) : (
-                  <i className="fa-regular fa-heart absolute right-10 badge px-2 py-3 top-3 badge-outline badge-secondary"></i>
+                  <i className="fa-regular fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3 top-3 badge-outline badge-secondary"></i>
                 )}
               </button>
             </h2>
 
-            <div>
-              <p className="badge badge-secondary badge-outline">
+            <div className="mb-2 items-center flex ">
+              <p className="badge badge-secondary badge-outline h-auto p-2">
                 {animalPage.animalPage?.breeds.primary}
               </p>
               <p
@@ -133,27 +133,30 @@ function Animal() {
           </div>
           {/* CAROUSEL END */}
 
-          <div className="card bg-indigo-200 shadow-lg h-[25%] w-[43%] items-center flex justify-center absolute  bottom-[4rem] border-2 border-orange-200 ">
-            <div className="card-title text-orange-100  mb-6 text-2xl ">
-              Interested in{" "}
-              <span className="text-indigo-400">
-                {animalPage.animalPage?.name}
-              </span>
-              ?
+          <div className="card bg-indigo-200 shadow-lg h-[25%] lg:w-[43%] ml-[-10px] lg:ml-0 mt-12  items-center flex justify-center lg:absolute static  bottom-[4rem] border-2 border-orange-200 ">
+            <div className="card-title text-orange-100  my-5 text-2xl">
+              <h4 className="text-center">
+                Interested in {""}
+                <span className="text-indigo-400">
+                  {animalPage.animalPage?.name}
+                </span>
+                ?
+              </h4>
             </div>
-            <div className="justify-evenly w-full flex">
+            <div className="justify-evenly w-full flex flex-col lg:flex-row items-center">
               <button
                 onClick={(e) => onClick(e)}
-                className="py-2 px-5 rounded-xl mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
+                className="lg:py-2 px-5 p-1 w-fit rounded-xl mb-2 lg:mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
               >
-                Add To Wishlist <i className="fa-regular fa-heart px-2 py-3" />
+                Add To Wishlist{" "}
+                <i className="fa-regular fa-heart lg:px-2 lg:py-3" />
               </button>
               <div className="divider">
                 <i class="fa-solid fa-worm text-indigo-400"></i>
               </div>
               <label
                 htmlFor="adopt-modal"
-                className="py-2 cursor-pointer flex items-center px-10 rounded-xl mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
+                className="lg:py-4 my-2 lg:mt-0 justify-center cursor-pointer flex items-center px-10 p-1 text-center rounded-xl mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
               >
                 Begin Inquiry
               </label>
@@ -162,106 +165,11 @@ function Animal() {
         </div>
       </div>
 
-      {/* ADOPT MODAL */}
-      <input type="checkbox" id="adopt-modal" className="modal-toggle" />
-      <form className="modal" onSubmit={() => navigate("/adoptionRequest")}>
-        <div className="modal-box p-6 border-2 border-indigo-400">
-          <h1 className="font-bold mb-5">Adoption Request</h1>
-          <div className="flex flex-col items-start gap-1">
-            <label htmlFor="name">Name</label>
-            <input
-              required
-              className="w-[90%] rounded-lg p-1 border-2 border-indigo-200"
-              type="text"
-              name="name"
-              id="name"
-            />
-
-            <label htmlFor="email">Email</label>
-            <input
-              required
-              className="w-[90%] rounded-lg p-1 border-2 border-indigo-200"
-              type="email"
-              name="email"
-              id="email"
-            />
-
-            <label htmlFor="number">Phone Number</label>
-            <input
-              required
-              className="w-[40%] rounded-lg p-1 border-2 border-indigo-200"
-              placeholder="(555)-555-5555"
-              type="number"
-              name="number"
-              id="number"
-            />
-
-            <label htmlFor="description">Description of household</label>
-            <textarea
-              required
-              className="w-[80%] h-40 rounded-lg p-1 border-2 border-indigo-200 resize-none	"
-              type="text"
-              name="description"
-              id="description"
-            />
-
-            <div className="flex w-full mt-2">
-              <label>Current animals in household?</label>
-
-              <div className="ml-5 gap-3 flex">
-                <label htmlFor="yes">Yes</label>
-                <input
-                  required
-                  id="yes"
-                  type="radio"
-                  name="radio-5"
-                  className=" radio-primary"
-                />
-
-                <label htmlFor="no">No</label>
-                <input
-                  id="no"
-                  type="radio"
-                  name="radio-5"
-                  className=" radio-primary"
-                />
-              </div>
-            </div>
-
-            <div className="grid mt-2">
-              <label>If yes, which other animals do you own?</label>
-              <input
-                id="no"
-                type="text"
-                className="w-[100%] mt-2 rounded-lg p-1 border-2 border-indigo-200"
-                placeholder=""
-              />
-            </div>
-          </div>
-
-          <div className="modal-action">
-            <label
-              className="btn shadow-lg bg-[#fed7aa] border-transparent hover:bg-[#fdba74] hover:text-black hover:shadow-xl hover:border-transparent btn-outline"
-              htmlFor="adopt-modal"
-            >
-              Close
-            </label>
-            <button
-              className="btn shadow-lg bg-[#c7d2fe] border-transparent hover:bg-[#a5b4fc] hover:text-black hover:shadow-xl hover:border-transparent btn-outline"
-              type="submit"
-            >
-              Send
-            </button>
-          </div>
-        </div>
-      </form>
-      {/* END MODAL */}
-
-      <div className="bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg">
+      <div className="bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg mt-16 lg:mt-0">
         <h2 className="font-bold mt-10 text-3xl text-indigo-500 underline text-center">
           A Little About Me...
         </h2>
-        <div className="m-10">
+        <div className="m-10 w-[16rem] lg:w-auto">
           <div>
             <h1 className="text-2xl font-bold mb-2 underline text-orange-400">
               Personality
@@ -354,6 +262,102 @@ function Animal() {
             </div>
           </div>
         </div>
+
+        {/* ADOPT MODAL */}
+        <input type="checkbox" id="adopt-modal" className="modal-toggle" />
+        <form className="modal" onSubmit={() => navigate("/adoptionRequest")}>
+          <div className="modal-box p-6 border-2 border-indigo-400">
+            <h1 className="font-bold mb-5">Adoption Request</h1>
+            <div className="flex flex-col items-start gap-1">
+              <label htmlFor="name">Name</label>
+              <input
+                required
+                className="w-[90%] rounded-lg p-1 border-2 border-indigo-200"
+                type="text"
+                name="name"
+                id="name"
+              />
+
+              <label htmlFor="email">Email</label>
+              <input
+                required
+                className="w-[90%] rounded-lg p-1 border-2 border-indigo-200"
+                type="email"
+                name="email"
+                id="email"
+              />
+
+              <label htmlFor="number">Phone Number</label>
+              <input
+                min="9"
+                required
+                className="w-[40%] rounded-lg p-1 border-2 border-indigo-200"
+                placeholder="(555)-555-5555"
+                type="number"
+                name="number"
+                id="number"
+              />
+
+              <label htmlFor="description">Description of household</label>
+              <textarea
+                required
+                className="w-[80%] h-40 rounded-lg p-1 border-2 border-indigo-200 resize-none	"
+                type="text"
+                name="description"
+                id="description"
+              />
+
+              <div className="flex w-full mt-2">
+                <label>Current animals in household?</label>
+
+                <div className="ml-5 gap-3 flex">
+                  <label htmlFor="yes">Yes</label>
+                  <input
+                    required
+                    id="yes"
+                    type="radio"
+                    name="radio-5"
+                    className=" radio-primary"
+                  />
+
+                  <label htmlFor="no">No</label>
+                  <input
+                    id="no"
+                    type="radio"
+                    name="radio-5"
+                    className=" radio-primary"
+                  />
+                </div>
+              </div>
+
+              <div className="grid mt-2">
+                <label>If yes, which other animals do you own?</label>
+                <input
+                  id="no"
+                  type="text"
+                  className="w-[100%] mt-2 rounded-lg p-1 border-2 border-indigo-200"
+                  placeholder=""
+                />
+              </div>
+            </div>
+
+            <div className="modal-action">
+              <label
+                className="btn shadow-lg bg-[#fed7aa] border-transparent hover:bg-[#fdba74] hover:text-black hover:shadow-xl hover:border-transparent btn-outline"
+                htmlFor="adopt-modal"
+              >
+                Close
+              </label>
+              <button
+                className="btn shadow-lg bg-[#c7d2fe] border-transparent hover:bg-[#a5b4fc] hover:text-black hover:shadow-xl hover:border-transparent btn-outline"
+                type="submit"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </form>
+        {/* END MODAL */}
       </div>
     </div>
   );
