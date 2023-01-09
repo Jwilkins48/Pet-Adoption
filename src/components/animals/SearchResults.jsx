@@ -7,9 +7,9 @@ import AnimalCard from "./AnimalCard";
 
 function SearchResults() {
   //Searched array
-  const { currentPost, sort } = useContext(AnimalContext);
+  const { currentPost, sort, animals } = useContext(AnimalContext);
 
-  const ASC = [...currentPost]
+  const ASC = [...animals]
     .sort((a, b) => (a.name > b.name ? 1 : -1))
     .map((item) => {
       return (
@@ -19,7 +19,7 @@ function SearchResults() {
       );
     });
 
-  const DESC = [...currentPost]
+  const DESC = [...animals]
     .sort((a, b) => (a.name > b.name ? -1 : 1))
     .map((item) => {
       return (

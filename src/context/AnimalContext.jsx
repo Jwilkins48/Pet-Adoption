@@ -10,7 +10,6 @@ export const AnimalProvider = ({ children }) => {
   const initialState = {
     animalsArray: [],
     animalPage: {},
-    inWishlist: [],
   };
   const [state, dispatch] = useReducer(AnimalReducer, initialState);
   const [animals, setAnimals] = useLocalStorage("animals", []);
@@ -21,9 +20,9 @@ export const AnimalProvider = ({ children }) => {
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
   const currentPost = animals.slice(firstPostIndex, lastPostIndex);
-  const totalPosts = animals.length;
-
   const [sort, setSort] = useState("DEFAULT");
+
+  const totalPosts = animals.length;
 
   const addToWishlist = (wish) => {
     setWishlistArr([wish, ...wishlistArr]);
@@ -68,6 +67,7 @@ export const AnimalProvider = ({ children }) => {
     <AnimalContext.Provider
       value={{
         ...state,
+        animals,
         totalPosts,
         currentPost,
         uniqueWishlist,
