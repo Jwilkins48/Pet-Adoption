@@ -80,7 +80,7 @@ function Animal() {
           <div className="flex items-center gap-5">
             <h2 className="lg:text-5xl text-4xl mb-6 lg:mb-3 card-title text-red-300 ">
               {animalPage.animalPage?.name}
-              <button
+              {/* <button
                 className=" absolute right-5 top-6"
                 onClick={(e) => onClick(e)}
               >
@@ -89,7 +89,7 @@ function Animal() {
                 ) : (
                   <i className="fa-regular fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3 top-3 badge-outline badge-secondary"></i>
                 )}
-              </button>
+              </button> */}
             </h2>
 
             <div className="mb-2 items-center flex ">
@@ -166,6 +166,13 @@ function Animal() {
       </div>
 
       <div className="bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg mt-16 lg:mt-0 relative">
+        <button className=" absolute right-5 top-6" onClick={(e) => onClick(e)}>
+          {isFound ? (
+            <i className="fa-solid fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3 badge-secondary"></i>
+          ) : (
+            <i className="fa-regular fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3 top-3 badge-outline badge-secondary"></i>
+          )}
+        </button>
         <h2 className="font-bold mt-10 text-3xl text-indigo-500 underline text-center">
           A Little About Me...
         </h2>
