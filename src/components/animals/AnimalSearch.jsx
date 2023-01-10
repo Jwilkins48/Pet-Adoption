@@ -4,7 +4,6 @@ import SearchResults from "./SearchResults";
 function AnimalSearch() {
   return (
     <>
-      <Input />
       <SearchResults />
     </>
   );

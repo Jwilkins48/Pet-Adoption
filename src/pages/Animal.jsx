@@ -75,7 +75,7 @@ function Animal() {
   return (
     <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-8 bg-indigo-100 lg:h-[75vh] w-full rounded-lg p-5 border-2 border-blue-300 relative h-auto ">
       <div className="flex items-center justify-center lg:justify-start lg:items-start">
-        <div className="ml-5">
+        <div className="mx-auto">
           <span>Meet</span>
           <div className="flex items-center gap-5">
             <h2 className="lg:text-5xl text-4xl mb-6 lg:mb-3 card-title text-red-300 ">
@@ -165,7 +165,7 @@ function Animal() {
         </div>
       </div>
 
-      <div className="bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg mt-16 lg:mt-0">
+      <div className="bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg mt-16 lg:mt-0 relative">
         <h2 className="font-bold mt-10 text-3xl text-indigo-500 underline text-center">
           A Little About Me...
         </h2>
@@ -226,7 +226,7 @@ function Animal() {
             <h1 className="text-2xl underline text-orange-400 font-bold">
               Details
             </h1>
-            <div className="flex flex-col justify-between h-[10rem]	 mt-3">
+            <div className="flex flex-col justify-between h-[10rem] mt-3">
               <p className="">
                 {animalPage.animalPage?.name} is
                 <span className="text-indigo-500 font-bold">
@@ -259,6 +259,13 @@ function Animal() {
                   ? "Special Needs"
                   : ""}
               </p>
+
+              <button
+                onClick={() => navigate("/search")}
+                className="absolute bottom-2 lg:bottom-10 text-orange-200 bg-indigo-300 p-2 rounded-xl shadow hover:shadow-xl"
+              >
+                Back To Search
+              </button>
             </div>
           </div>
         </div>

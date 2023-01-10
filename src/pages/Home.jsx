@@ -54,7 +54,7 @@ function Home() {
             className="customBlue hover:shadow-xl shadow-md animate__animated animate__fadeInDown four card w-[9rem] badge badge-outline badge-primary h-[8rem] justify-center items-center"
           >
             <img className="h-20 mb-2" src={rabbit} alt="dog" />
-            Other Animals
+            Rabbits
           </button>
         </div>
       </div>

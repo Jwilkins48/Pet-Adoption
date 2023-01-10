@@ -1,47 +1,33 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AnimalContext from "../../context/AnimalContext";
 
 function Input() {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-
   const { dispatch, searchAnimal } = useContext(AnimalContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name === "") {
-      alert("Please insert animal");
-    } else {
-      navigate("/search");
-      const animalList = searchAnimal(name);
-      console.log(animalList);
-      dispatch({ type: "GET_ANIMALS", payload: animalList });
-      setName("");
-    }
+    navigate("/search");
+    const animalList = searchAnimal(e.target.value);
+    console.log(animalList);
+    dispatch({ type: "GET_ANIMALS", payload: animalList });
   };
   return (
     <div className="grid grid-cols-1 mb-8 gap-8">
       <div className="w-full">
-        <form onSubmit={handleSubmit}>
-          <div className="form-control">
-            <div className="relative">
-              <input
-                placeholder="Search Animal"
-                className="w-full  bg-gray-200 input input-lg text-black"
-                type="text"
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-              />
-              <button
-                className="absolute top-0 right-0 sm:rounded-l-none w-36 btn btn-lg btn-secondary"
-                type="submit"
-              >
-                Go
-              </button>
-            </div>
-          </div>
-        </form>
+        <select
+          onChange={(e) => handleSubmit(e)}
+          className="select select-bordered select-secondary w-full h-16"
+        >
+          <option value="select">Select Animal</option>
+          <option value="cat">Cats</option>
+          <option value="dog">Dogs</option>
+          <option value="bird">Birds</option>
+          <option value="barnyard">Barnyard animals</option>
+          <option value="horse">Horses</option>
+          <option value="rabbit">Rabbits</option>
+        </select>
       </div>
     </div>
   );
