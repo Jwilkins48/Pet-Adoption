@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import wave from "../components/Assets/waves.png";
+import wave from "../components/Assets/waves.webp";
 
 function Inquiry() {
   const navigate = useNavigate();

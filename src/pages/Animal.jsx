@@ -2,7 +2,7 @@ import { useEffect, useContext, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useParams, useNavigate } from "react-router-dom";
 import AnimalContext from "../context/AnimalContext";
-import paw from "../components/Assets/paw-prints.png";
+import paw from "../components/Assets/paw-prints.webp";
 import Flickity from "react-flickity-component";
 
 function Animal() {

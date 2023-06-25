@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import paw from "../Assets/paw-prints.png";
+import paw from "../Assets/paw-prints.webp";
 import AnimalContext from "../../context/AnimalContext";
 
 import { Link } from "react-router-dom";

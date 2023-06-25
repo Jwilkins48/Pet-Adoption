@@ -1,24 +1,21 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AnimalContext from "../context/AnimalContext";
-import adopt from "../components/Assets/project.png";
-import dog from "../components/Assets/dog.png";
-import happy from "../components/Assets/happy.png";
-import horse from "../components/Assets/horse.png";
-import rabbit from "../components/Assets/rabbit.png";
+import adopt from "../components/Assets/project.webp";
+import dog from "../components/Assets/dog.webp";
+import happy from "../components/Assets/happy.webp";
+import horse from "../components/Assets/horse.webp";
+import rabbit from "../components/Assets/rabbit.webp";
 import Input from "../components/layout/Input";
 import "animate.css";
 
 function Home() {
-  const { searchAnimal, dispatch, makeCall } = useContext(AnimalContext);
+  const { makeCall } = useContext(AnimalContext);
   const navigate = useNavigate();
 
   const onClick = async (animal) => {
     navigate("/search");
     makeCall(animal);
-    // const animalList = searchAnimal(animal);
-    // console.log(animalList);
-    // dispatch({ type: "GET_ANIMALS", payload: animalList });
   };
   return (
     <div className="home w-full grid grid-cols-1 md:grid-cols-2 gap-8 ">

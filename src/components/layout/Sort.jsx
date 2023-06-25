@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import AnimalContext from "../../context/AnimalContext";
-import dog from "../Assets/dog.png";
-import happy from "../Assets/happy.png";
-import horse from "../Assets/horse.png";
-import rabbit from "../Assets/rabbit.png";
+import dog from "../Assets/dog.webp";
+import happy from "../Assets/happy.webp";
+import horse from "../Assets/horse.webp";
+import rabbit from "../Assets/rabbit.webp";
 import { useNavigate } from "react-router-dom";
 
 function Sort() {
