@@ -10,14 +10,15 @@ import Input from "../components/layout/Input";
 import "animate.css";
 
 function Home() {
-  const { searchAnimal, dispatch } = useContext(AnimalContext);
+  const { searchAnimal, dispatch, makeCall } = useContext(AnimalContext);
   const navigate = useNavigate();
 
   const onClick = async (animal) => {
     navigate("/search");
-    const animalList = searchAnimal(animal);
-    console.log(animalList);
-    dispatch({ type: "GET_ANIMALS", payload: animalList });
+    makeCall(animal);
+    // const animalList = searchAnimal(animal);
+    // console.log(animalList);
+    // dispatch({ type: "GET_ANIMALS", payload: animalList });
   };
   return (
     <div className="home w-full grid grid-cols-1 md:grid-cols-2 gap-8 ">

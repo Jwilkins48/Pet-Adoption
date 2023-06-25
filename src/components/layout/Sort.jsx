@@ -7,11 +7,13 @@ import rabbit from "../Assets/rabbit.png";
 import { useNavigate } from "react-router-dom";
 
 function Sort() {
-  const { setSort, searchAnimal, dispatch } = useContext(AnimalContext);
+  const { setSort, searchAnimal, dispatch, makeCall } =
+    useContext(AnimalContext);
   const [dropdown, setDropdown] = useState(false);
   const onClick = async (animal) => {
-    const animalList = searchAnimal(animal);
-    dispatch({ type: "GET_ANIMALS", payload: animalList });
+    makeCall(animal);
+    // const animalList = searchAnimal(animal);
+    // dispatch({ type: "GET_ANIMALS", payload: animalList });
     setDropdown(false);
   };
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ function Sort() {
       <div>
         <div className="grid grid-cols-2 gap-2 lg:grid-cols-1 md:grid-cols-4 items-center lg:flex">
           <button className="hidden lg:block" onClick={() => navigate("/")}>
-            <i class="fa-solid fa-chevron-left text-indigo-300 text-xl mr-5 "></i>
+            <i className="fa-solid fa-chevron-left text-indigo-300 text-xl mr-5 " />
           </button>
           <button
             onClick={() => onClick("dog")}

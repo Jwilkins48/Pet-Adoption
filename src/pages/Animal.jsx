@@ -12,6 +12,8 @@ function Animal() {
   const {
     animalPage,
     getAnimalProfile,
+    profile,
+    makeProfileCall,
     dispatch,
     addToWishlist,
     removeFromWishlist,
@@ -22,18 +24,18 @@ function Animal() {
   const onClick = (e) => {
     e.preventDefault();
     const wish = {
-      id: animalPage.animalPage.id,
-      name: animalPage.animalPage.name,
-      img: animalPage.animalPage.photos,
-      gender: animalPage.animalPage.gender,
-      age: animalPage.animalPage.age,
-      description: animalPage.animalPage.description,
+      id: profile.id,
+      name: profile.name,
+      img: profile.photos,
+      gender: profile.gender,
+      age: profile.age,
+      description: profile.description,
       checked: profileWishlist,
     };
     if (wish.checked === false) {
       addToWishlist(wish);
     } else {
-      removeFromWishlist(animalPage.animalPage.id);
+      removeFromWishlist(profile?.id);
     }
     setProfileWishlist(!profileWishlist);
   };
@@ -46,12 +48,7 @@ function Animal() {
 
   // Display fetch results
   useEffect(() => {
-    const getAnimalData = async () => {
-      const animalData = await getAnimalProfile(params.id);
-      console.log(animalData);
-      dispatch({ type: "GET_ANIMAL_PROFILE", payload: animalData });
-    };
-    getAnimalData();
+    makeProfileCall(params.id);
   }, [dispatch, params.id]);
 
   const flickityOptions = {
@@ -61,7 +58,7 @@ function Animal() {
 
   //Check if in wishlist array
   const isFound = uniqueWishlist.some((element) => {
-    if (element.id === animalPage.animalPage?.id) {
+    if (element.id === profile?.id) {
       return true;
     }
     return false;
@@ -78,41 +75,31 @@ function Animal() {
         <div className="mx-auto">
           <span>Meet</span>
           <div className="flex items-center gap-5">
-            <h2 className="lg:text-5xl text-4xl mb-6 lg:mb-3 card-title text-red-300 ">
-              {animalPage.animalPage?.name}
-              {/* <button
-                className=" absolute right-5 top-6"
-                onClick={(e) => onClick(e)}
-              >
-                {isFound ? (
-                  <i className="fa-solid fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3 badge-secondary"></i>
-                ) : (
-                  <i className="fa-regular fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3 top-3 badge-outline badge-secondary"></i>
-                )}
-              </button> */}
+            <h2 className="lg:[20px] text-4xl mb-6 lg:mb-3 card-title text-red-300 ">
+              {profile?.name}
             </h2>
 
             <div className="mb-2 items-center flex ">
               <p className="badge badge-secondary badge-outline h-auto p-2">
-                {animalPage.animalPage?.breeds.primary}
+                {profile?.breeds?.primary}
               </p>
               <p
                 className={
-                  animalPage.animalPage?.gender === "Male"
+                  profile?.gender === "Male"
                     ? "badge badge-primary ml-2 p-2.5"
                     : "badge badge-secondary ml-2 p-2.5"
                 }
               >
-                {animalPage.animalPage?.gender}
+                {profile?.gender}
               </p>
             </div>
           </div>
 
           {/* CAROUSEL */}
           <div className="ml-0 w-full lg:w-[40rem]  rounded-xl">
-            {animalPage.animalPage?.photos.length > 2 ? (
+            {profile?.photos?.length >= 1 ? (
               <Flickity options={flickityOptions}>
-                {animalPage.animalPage?.photos.map((item, index) => (
+                {profile?.photos.map((item, index) => (
                   <img
                     key={index}
                     className="petCarousel-body-slide h-80 rounded shadow-xl"
@@ -137,10 +124,7 @@ function Animal() {
             <div className="card-title text-orange-100  my-5 text-2xl">
               <h4 className="text-center">
                 Interested in {""}
-                <span className="text-indigo-400">
-                  {animalPage.animalPage?.name}
-                </span>
-                ?
+                <span className="text-indigo-400">{profile?.name}</span>?
               </h4>
             </div>
             <div className="justify-evenly w-full flex flex-col lg:flex-row items-center">
@@ -152,7 +136,7 @@ function Animal() {
                 <i className="fa-regular fa-heart lg:px-2 lg:py-3" />
               </button>
               <div className="divider">
-                <i class="fa-solid fa-worm text-indigo-400"></i>
+                <i className="fa-solid fa-worm text-indigo-400" />
               </div>
               <label
                 htmlFor="adopt-modal"
@@ -167,10 +151,10 @@ function Animal() {
 
       <div className="bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg mt-16 lg:mt-0 relative">
         <button className=" absolute right-5 top-6" onClick={(e) => onClick(e)}>
-          {isFound ? (
-            <i className="fa-solid fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3 badge-secondary"></i>
+          {profileWishlist ? (
+            <i className="fa-solid fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3  badge-secondary" />
           ) : (
-            <i className="fa-regular fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3 top-3 badge-outline badge-secondary"></i>
+            <i className="fa-regular fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3  badge-outline badge-secondary" />
           )}
         </button>
         <h2 className="font-bold mt-10 text-3xl text-indigo-500 underline text-center">
@@ -182,44 +166,32 @@ function Animal() {
               Personality
             </h1>
             <p className="grid grid-cols-2">
-              {animalPage.animalPage?.tags.map((item, index) => (
+              {profile?.tags?.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
             </p>
 
             <div className="grid grid-cols-2">
-              <li
-                className={
-                  animalPage.animalPage?.environment.cats ? "" : "list-none"
-                }
-              >
-                {animalPage.animalPage?.environment.cats
+              <li className={profile?.environment?.cats ? "" : "list-none"}>
+                {profile?.environment?.cats
                   ? "I love cats"
                   : "I'm not a big fan of cats"
-                  ? animalPage.animalPage?.environment.dogs == null
+                  ? profile?.environment?.dogs == null
                   : ""}
               </li>
 
-              <li
-                className={
-                  animalPage.animalPage?.environment.children ? "" : "list-none"
-                }
-              >
-                {animalPage.animalPage?.environment.children
+              <li className={profile?.environment?.children ? "" : "list-none"}>
+                {profile?.environment?.children
                   ? "I love kids!"
                   : "I'm a little afraid of kids"
-                  ? animalPage.animalPage?.environment.dogs == null
+                  ? profile?.environment?.dogs == null
                   : ""}
               </li>
-              <li
-                className={
-                  animalPage.animalPage?.environment.dogs ? "" : "list-none"
-                }
-              >
-                {animalPage.animalPage?.environment.dogs
+              <li className={profile?.environment?.dogs ? "" : "list-none"}>
+                {profile?.environment?.dogs
                   ? "I get along with dogs too!"
                   : "I'm not a big fan of dogs"
-                  ? animalPage.animalPage?.environment.dogs == null
+                  ? profile?.environment?.dogs == null
                   : ""}
               </li>
             </div>
@@ -235,9 +207,9 @@ function Animal() {
             </h1>
             <div className="flex flex-col justify-between h-[10rem] mt-3">
               <p className="">
-                {animalPage.animalPage?.name} is
+                {profile?.name} is
                 <span className="text-indigo-500 font-bold">
-                  {animalPage.animalPage?.attributes.house_trained
+                  {profile?.attributes?.house_trained
                     ? " house trained"
                     : " not yet house trained"}
                 </span>
@@ -246,25 +218,23 @@ function Animal() {
               <p className="">
                 Vaccines/shots are
                 <span className="text-indigo-500 font-bold">
-                  {animalPage.animalPage?.attributes.shots_current
+                  {profile?.attributes?.shots_current
                     ? " fully up to date!"
                     : " not yet up to date."}
                 </span>
               </p>
 
               <p className="">
-                {animalPage.animalPage?.name} has
+                {profile?.name} has
                 <span className="text-indigo-500 font-bold">
-                  {animalPage.animalPage?.attributes.spayed_neutered
+                  {profile?.attributes?.spayed_neutered
                     ? " been spayed/neutered"
                     : " not yet been spayed/neutered"}
                 </span>
               </p>
 
               <p className="">
-                {animalPage.animalPage?.attributes.special_needs
-                  ? "Special Needs"
-                  : ""}
+                {profile?.attributes?.special_needs ? "Special Needs" : ""}
               </p>
 
               <button

@@ -7,13 +7,13 @@ import AnimalCard from "./AnimalCard";
 
 function SearchResults() {
   //Searched array
-  const { currentPost, sort, animals } = useContext(AnimalContext);
+  const { currentPost, sort, animals, makeCall } = useContext(AnimalContext);
 
   const ASC = [...animals]
     .sort((a, b) => (a.name > b.name ? 1 : -1))
     .map((item) => {
       return (
-        <div>
+        <div key={item.id}>
           <AnimalCard key={item.id} item={item} />
         </div>
       );
@@ -23,7 +23,7 @@ function SearchResults() {
     .sort((a, b) => (a.name > b.name ? -1 : 1))
     .map((item) => {
       return (
-        <div>
+        <div key={item.id}>
           <AnimalCard key={item.id} item={item} />
         </div>
       );
@@ -35,7 +35,7 @@ function SearchResults() {
         <Sort />
         <div className="grid grid-cols-1 gap-8 mb-5 lg:grid-cols-4 md:grid-cols-2">
           {currentPost?.map((item) => (
-            <div>
+            <div key={item.id}>
               <AnimalCard key={item.id} item={item} />
             </div>
           ))}
