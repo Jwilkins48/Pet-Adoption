@@ -76,7 +76,7 @@ function Home() {
       </div>
       <div>
         <figure className="lg:ml-10 mb-10">
-          <img src={adopt} alt="animal friends" />
+          <img width="650" height="100" src={adopt} alt="animal friends" />
         </figure>
       </div>
     </div>
