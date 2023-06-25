@@ -4,7 +4,6 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 const AnimalContext = createContext();
 const URL = import.meta.env.VITE_PET_FINDER_URL;
-const TOKEN = import.meta.env.VITE_ACCESS_TOKEN;
 
 export const AnimalProvider = ({ children }) => {
   const initialState = {

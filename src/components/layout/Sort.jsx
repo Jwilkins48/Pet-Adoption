@@ -7,13 +7,11 @@ import rabbit from "../Assets/rabbit.webp";
 import { useNavigate } from "react-router-dom";
 
 function Sort() {
-  const { setSort, searchAnimal, dispatch, makeCall } =
-    useContext(AnimalContext);
   const [dropdown, setDropdown] = useState(false);
-  const onClick = async (animal) => {
+  const { setSort, makeCall } = useContext(AnimalContext);
+
+  const onClick = (animal) => {
     makeCall(animal);
-    // const animalList = searchAnimal(animal);
-    // dispatch({ type: "GET_ANIMALS", payload: animalList });
     setDropdown(false);
   };
   const navigate = useNavigate();

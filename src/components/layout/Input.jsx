@@ -4,15 +4,12 @@ import AnimalContext from "../../context/AnimalContext";
 
 function Input() {
   const navigate = useNavigate();
-  const { dispatch, searchAnimal, makeCall } = useContext(AnimalContext);
+  const { makeCall } = useContext(AnimalContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     navigate("/search");
     makeCall(e.target.value);
-    // const animalList = searchAnimal(e.target.value);
-    // console.log(animalList);
-    // dispatch({ type: "GET_ANIMALS", payload: animalList });
   };
   return (
     <div className="grid grid-cols-1 mb-8 gap-8">
