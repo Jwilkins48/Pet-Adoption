@@ -7,7 +7,7 @@ function Wishlist() {
   const { uniqueWishlist } = useContext(AnimalContext);
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="mt-32">
       <h1
         className={
           uniqueWishlist?.length > 0

@@ -31,7 +31,7 @@ function SearchResults() {
 
   if (sort === "DEFAULT") {
     return (
-      <div className="results-wrapper">
+      <div className="results-wrapper mt-32">
         <Sort />
         <div className="grid grid-cols-1 gap-8 mb-5 lg:grid-cols-4 md:grid-cols-2">
           {currentPost?.map((item) => (
@@ -45,7 +45,7 @@ function SearchResults() {
     );
   } else if (sort === "ASC") {
     return (
-      <div className="results-wrapper">
+      <div className="results-wrapper mt-32">
         <Sort />
         <div className="grid grid-cols-1 gap-8 mb-5 lg:grid-cols-4 md:grid-cols-2">
           {ASC}
@@ -55,7 +55,7 @@ function SearchResults() {
     );
   } else if (sort === "DESC") {
     return (
-      <div className="results-wrapper">
+      <div className="results-wrapper mt-32">
         <Sort />
         <div className="grid grid-cols-1 gap-8 mb-5 lg:grid-cols-4 md:grid-cols-2">
           {DESC}

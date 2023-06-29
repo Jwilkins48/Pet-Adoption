@@ -44,60 +44,52 @@ function AnimalCard({ item }) {
   let petImage = item.photos.length > 0 ? item.photos[0].medium : paw;
   return (
     <form
-      onSubmit={(e) => handleSubmit(e)}
-      className="animate__animated animate__fadeIn card h-[36rem] w-95 bg-base-100 shadow-xl my-2 relative"
+      onClick={() => navigate(`/search/animals/${item.id}`)}
+      className="animate__animated animate__fadeIn card relative cursor-pointer border-2 border-indigo-300 bg-indigo-100 shadow-xl h-[36rem] w-95 my-2 "
     >
-      <button type="submit">
+      <button onClick={(e) => handleSubmit(e)}>
         {isFound === true ? (
-          <i className="fa-solid fa-heart absolute right-10 badge  px-2 py-3 top-3 badge-secondary"></i>
+          <i className="fa-solid fa-heart absolute right-10 badge px-2 py-3 top-8 badge-secondary"></i>
         ) : (
-          <i className="fa-regular fa-heart absolute right-10 badge px-2 py-3 top-3 badge-ghost"></i>
+          <i className="fa-regular fa-heart absolute right-10 badge px-2 py-3 top-8 badge-ghost"></i>
         )}
       </button>
       <figure className="p-3">
         <img
-          className="rounded-xl h-60 w-[18rem]"
+          className="rounded-xl mt-2 h-64 w-[18rem]"
           src={petImage}
           alt="animal"
         />
       </figure>
-      <hr className="mt-8 w-80 mx-auto" />
-      <div className="card-body">
+      <div className="divider mx-4 mt-8">
+        <i className="fa-solid fa-hippo text-primary" />
+      </div>
+      <div className="card-body py-1">
         <div className="flex items-center">
           <h2
             style={{ fontSize: nameSize > 10 ? "13px" : "" }}
-            className={nameSize >= 25 ? "truncate card-title" : "card-title"}
+            className={nameSize >= 8 ? "truncate card-title" : "card-title"}
           >
             {item.name}
           </h2>
-          <div className="badge badge-outline badge-primary ml-2 p-2.5">
+          <div className="badge text-base-100 badge-primary ml-2 p-2.5">
             {item.age}
           </div>
           <div
             className={
               gender === "Male"
-                ? "badge badge-primary ml-2 p-2.5"
-                : "badge badge-secondary ml-2 p-2.5"
+                ? "badge badge-info text-base-100 ml-2 p-2.5"
+                : "badge badge-secondary text-neutral ml-2 p-2.5"
             }
           >
             {item.gender}
           </div>
         </div>
-        <p>
+        <p className="leading-6 description">
           {item.description !== null
             ? item.description
             : `${item.name} is a beautiful ${item.age} ${item.species} in need of a loving family. Come meet them today!`}
         </p>
-        {/* </div> */}
-
-        <div className="card-actions justify-end">
-          <Link
-            className="text-base-content text-opacity-40"
-            to={`/search/animals/${item.id}`}
-          >
-            Visit Profile
-          </Link>
-        </div>
       </div>
     </form>
   );

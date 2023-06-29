@@ -6,7 +6,7 @@ function NavBar({ title }) {
   const { uniqueWishlist } = useContext(AnimalContext);
 
   return (
-    <nav className="navbar mb-10 py-7 pt-8 shadow-lg bg-primary">
+    <nav className="navbar mb-10 py-7 pt-8 shadow-lg bg-primary fixed z-10">
       <div className="container lg:mx-40 mr-5 ">
         <div>
           {/* Link to home */}

@@ -2,17 +2,21 @@ import { useContext } from "react";
 import paw from "../Assets/paw-prints.webp";
 import AnimalContext from "../../context/AnimalContext";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Wish({ item }) {
   let gender = item.gender;
   let petImage = item.img.length > 0 ? item.img[0].medium : paw;
   const { removeFromWishlist } = useContext(AnimalContext);
+  const navigate = useNavigate();
 
   return (
-    <form className="card h-[35rem] pt-5 w-95 bg-base-100 shadow-xl mt-5 relative">
+    <form
+      onClick={() => navigate(`/search/animals/${item.id}`)}
+      className="card h-[35rem] pt-5 w-95 bg-base-100 shadow-xl mt-5 relative cursor-pointer"
+    >
       <button onClick={() => removeFromWishlist(item.id)}>
-        <i className="fa-solid fa-heart absolute right-10 badge  px-2 py-3 top-3 badge-secondary"></i>
+        <i className="fa-solid fa-heart absolute right-12 badge px-2 py-3 top-8 badge-secondary" />
       </button>
       <figure className="px-2">
         <img
@@ -43,16 +47,6 @@ function Wish({ item }) {
             ? item.description
             : `${item.name} is a beautiful ${item.age} ${item.species} in need of a loving family. Come meet them today!`}
         </p>
-        {/* </div> */}
-
-        <div className="card-actions justify-end">
-          <Link
-            className="text-base-content text-opacity-40"
-            to={`/search/animals/${item.id}`}
-          >
-            Visit Profile
-          </Link>
-        </div>
       </div>
     </form>
   );

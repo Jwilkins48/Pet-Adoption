@@ -69,25 +69,30 @@ function Animal() {
     isFound
   );
 
+  const nameSize = profile?.name?.length;
+
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-8 bg-indigo-100 lg:h-[75vh] w-full rounded-lg p-5 border-2 border-blue-300 relative h-auto ">
-      <div className="flex items-center justify-center lg:justify-start lg:items-start">
+    <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-8 bg-indigo-100 lg:h-[75vh] w-full rounded-lg p-5 border-2 border-blue-300 relative h-auto mt-32">
+      <div className="md:flex items-center justify-center lg:justify-start lg:items-start">
         <div className="mx-auto">
-          <span>Meet</span>
-          <div className="flex items-center gap-5">
-            <h2 className="lg:[20px] text-4xl mb-6 lg:mb-3 card-title text-red-300 ">
+          <span className="text-blue-500 font-bold">Meet</span>
+          <div className="flex items-center gap-2 mb-2">
+            <h2
+              className={
+                nameSize > 15
+                  ? "text-xl lg:text-3xl mb-6 lg:mb-3 card-title text-red-300 "
+                  : "text-4xl mb-6 lg:mb-3 card-title text-red-300 "
+              }
+            >
               {profile?.name}
             </h2>
 
             <div className="mb-2 items-center flex ">
-              <p className="badge badge-secondary badge-outline h-auto p-2">
-                {profile?.breeds?.primary}
-              </p>
               <p
                 className={
                   profile?.gender === "Male"
-                    ? "badge badge-primary ml-2 p-2.5"
-                    : "badge badge-secondary ml-2 p-2.5"
+                    ? "badge badge-primary mt-1 p-2.5"
+                    : "badge badge-secondary mt-1 p-2.5"
                 }
               >
                 {profile?.gender}
@@ -120,7 +125,7 @@ function Animal() {
           </div>
           {/* CAROUSEL END */}
 
-          <div className="card bg-indigo-200 shadow-lg h-[25%] lg:w-[43%] ml-[-10px] lg:ml-0 mt-12  items-center flex justify-center lg:absolute static  bottom-[4rem] border-2 border-orange-200 ">
+          <div className="card bg-indigo-200 shadow-lg h-[25%] lg:w-[43%] ml-[-10px] lg:ml-0 mt-12 items-center flex justify-center lg:absolute static bottom-[4rem] border-2 border-orange-200 ">
             <div className="card-title text-orange-100  my-5 text-2xl">
               <h4 className="text-center">
                 Interested in {""}
@@ -135,7 +140,7 @@ function Animal() {
                 Add To Wishlist{" "}
                 <i className="fa-regular fa-heart lg:px-2 lg:py-3" />
               </button>
-              <div className="divider">
+              <div className="divider invisible my-0 sm:my-4 sm:visible mx-6 sm:mx-0">
                 <i className="fa-solid fa-worm text-indigo-400" />
               </div>
               <label
@@ -149,7 +154,7 @@ function Animal() {
         </div>
       </div>
 
-      <div className="bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg mt-16 lg:mt-0 relative">
+      <div className="bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg mt-10 lg:mt-0 relative">
         <button className=" absolute right-5 top-6" onClick={(e) => onClick(e)}>
           {profileWishlist ? (
             <i className="fa-solid fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3  badge-secondary" />
@@ -157,22 +162,28 @@ function Animal() {
             <i className="fa-regular fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3  badge-outline badge-secondary" />
           )}
         </button>
-        <h2 className="font-bold mt-10 text-3xl text-indigo-500 underline text-center">
+        <h2 className="font-bold mt-12 text-3xl text-indigo-500 underline text-center">
           A Little About Me...
         </h2>
-        <div className="m-10 w-[16rem] lg:w-auto">
-          <div>
+        <div className="m-5 lg:m-10 w-[16rem] lg:w-auto">
+          <div className="">
             <h1 className="text-2xl font-bold mb-2 underline text-orange-400">
               Personality
             </h1>
-            <p className="grid grid-cols-2">
+            <p className="grid grid-cols-2 text-sm lg:text-[16px] mr-3">
               {profile?.tags?.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li className="my-[1px]" key={index}>
+                  {item}
+                </li>
               ))}
             </p>
 
-            <div className="grid grid-cols-2">
-              <li className={profile?.environment?.cats ? "" : "list-none"}>
+            <div className="grid grid-cols-2 text-sm lg:text-[16px]">
+              <li
+                className={
+                  profile?.environment?.cats ? "my-[1px]" : "list-none "
+                }
+              >
                 {profile?.environment?.cats
                   ? "I love cats"
                   : "I'm not a big fan of cats"
@@ -180,14 +191,22 @@ function Animal() {
                   : ""}
               </li>
 
-              <li className={profile?.environment?.children ? "" : "list-none"}>
+              <li
+                className={
+                  profile?.environment?.children ? "my-[1px]" : "list-none"
+                }
+              >
                 {profile?.environment?.children
                   ? "I love kids!"
                   : "I'm a little afraid of kids"
                   ? profile?.environment?.dogs == null
                   : ""}
               </li>
-              <li className={profile?.environment?.dogs ? "" : "list-none"}>
+              <li
+                className={
+                  profile?.environment?.dogs ? "my-[1px]" : "list-none"
+                }
+              >
                 {profile?.environment?.dogs
                   ? "I get along with dogs too!"
                   : "I'm not a big fan of dogs"
@@ -206,8 +225,14 @@ function Animal() {
               Details
             </h1>
             <div className="flex flex-col justify-between h-[10rem] mt-3">
+              <p>
+                {profile?.name} is a
+                <span className="text-indigo-500 font-bold">
+                  {` ${profile?.breeds?.primary} `}
+                </span>
+              </p>
               <p className="">
-                {profile?.name} is
+                {profile?.gender === "Male" ? "He" : "She"} is
                 <span className="text-indigo-500 font-bold">
                   {profile?.attributes?.house_trained
                     ? " house trained"
@@ -239,7 +264,7 @@ function Animal() {
 
               <button
                 onClick={() => navigate("/search")}
-                className="absolute bottom-2 lg:bottom-10 text-orange-200 bg-indigo-300 p-2 rounded-xl shadow hover:shadow-xl"
+                className="bottom-10 hidden md:block absolute text-orange-200 bg-indigo-300 p-2 rounded-xl shadow hover:shadow-xl"
               >
                 Back To Search
               </button>

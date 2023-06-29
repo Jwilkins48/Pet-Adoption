@@ -14,12 +14,12 @@ export const AnimalProvider = ({ children }) => {
   const [animals, setAnimals] = useLocalStorage("animals", []);
   const [wishlistArr, setWishlistArr] = useLocalStorage("wishlistArr", []);
 
+  const [sort, setSort] = useState("DEFAULT");
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(8);
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
   const currentPost = animals.slice(firstPostIndex, lastPostIndex);
-  const [sort, setSort] = useState("DEFAULT");
 
   const totalPosts = animals.length;
 
