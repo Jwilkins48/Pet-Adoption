@@ -18,9 +18,9 @@ function Home() {
     makeCall(animal);
   };
   return (
-    <div className="home w-full grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+    <div className="home w-full grid grid-cols-1 md:grid-cols-2 gap-8 mt-28">
       <div className="flex-col flex justify-center">
-        <h1 className="word text-indigo-400 text-6xl tracking-tight text-5xl lg:w-[40rem] mb-10 ml-4">
+        <h1 className="word text-indigo-400 tracking-tight text-[2.5rem] lg:text-[3rem] lg:w-[40rem] mb-2 ml-3">
           Ready To Meet Your New Best Friend?
         </h1>
 

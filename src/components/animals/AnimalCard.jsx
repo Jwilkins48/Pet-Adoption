@@ -43,10 +43,7 @@ function AnimalCard({ item }) {
   const navigate = useNavigate();
   let petImage = item.photos.length > 0 ? item.photos[0].medium : paw;
   return (
-    <form
-      onClick={() => navigate(`/search/animals/${item.id}`)}
-      className="animate__animated animate__fadeIn card relative cursor-pointer border-2 border-indigo-300 bg-indigo-100 shadow-xl h-[36rem] w-95 my-2 "
-    >
+    <form className="animate__animated animate__fadeIn card relative border-2 border-indigo-300 bg-indigo-100 shadow-xl h-[36rem] my-2 ">
       <button onClick={(e) => handleSubmit(e)}>
         {isFound === true ? (
           <i className="fa-solid fa-heart absolute right-10 badge px-2 py-3 top-8 badge-secondary"></i>
@@ -90,6 +87,12 @@ function AnimalCard({ item }) {
             ? item.description
             : `${item.name} is a beautiful ${item.age} ${item.species} in need of a loving family. Come meet them today!`}
         </p>
+
+        <div className="card-actions justify-end mb-6">
+          <Link className="text-gray-600" to={`/search/animals/${item.id}`}>
+            Visit Profile
+          </Link>
+        </div>
       </div>
     </form>
   );

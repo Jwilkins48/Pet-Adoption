@@ -31,7 +31,7 @@ function Sort() {
           </button>
           <button
             onClick={() => onClick("cat")}
-            className="bg-green-100 hover:shadow-xl text-green-400 border-green-500 shadow-md animate__animated animate__fadeInDown two card w-[4rem] h-[6rem] lg:h-[5rem] w-32 badge justify-center items-center"
+            className="bg-green-100 hover:shadow-xl text-green-400 border-green-500 shadow-md animate__animated animate__fadeInDown two card w-[4rem] h-[6rem] lg:h-[5rem] badge justify-center items-center"
           >
             <img className="h-10 mb-2" src={happy} alt="cat" />
             Cats
@@ -45,7 +45,6 @@ function Sort() {
           </button>
           <div className="flex flex-col items-center">
             <button
-              // onClick={() => onClick("rabbit")}
               onClick={() => setDropdown(!dropdown)}
               className="bg-green-100  border-green-500 text-green-400 hover:shadow-xl shadow-md animate__animated animate__fadeInDown four card w-[4rem] h-[6rem] lg:h-[5rem] badge  justify-center items-center"
             >

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import paw from "../Assets/paw-prints.webp";
 import AnimalContext from "../../context/AnimalContext";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Wish({ item }) {
   let gender = item.gender;
@@ -11,10 +11,7 @@ function Wish({ item }) {
   const navigate = useNavigate();
 
   return (
-    <form
-      onClick={() => navigate(`/search/animals/${item.id}`)}
-      className="card h-[35rem] pt-5 w-95 bg-base-100 shadow-xl mt-5 relative cursor-pointer"
-    >
+    <form className="card h-[35rem] pt-5 w-95 bg-base-100 shadow-xl mt-5 relative border-2 border-pink-300">
       <button onClick={() => removeFromWishlist(item.id)}>
         <i className="fa-solid fa-heart absolute right-12 badge px-2 py-3 top-8 badge-secondary" />
       </button>
@@ -25,7 +22,9 @@ function Wish({ item }) {
           alt="animal"
         />
       </figure>
-      <hr className="mt-8 w-80 mx-auto" />
+      <div className="divider mx-4 mt-8">
+        <i className="fa-solid fa-hippo text-primary" />
+      </div>{" "}
       <div className="card-body">
         <div className="flex items-center">
           <h2 className="card-title">{item.name}</h2>
@@ -47,6 +46,11 @@ function Wish({ item }) {
             ? item.description
             : `${item.name} is a beautiful ${item.age} ${item.species} in need of a loving family. Come meet them today!`}
         </p>
+        <div className="card-actions justify-end mb-6">
+          <Link className="text-gray-600" to={`/search/animals/${item.id}`}>
+            Visit Profile
+          </Link>
+        </div>
       </div>
     </form>
   );

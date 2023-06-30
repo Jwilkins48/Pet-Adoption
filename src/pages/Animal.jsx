@@ -20,6 +20,20 @@ function Animal() {
     uniqueWishlist,
   } = useContext(AnimalContext);
 
+  //Check if in wishlist array
+  const isFound = uniqueWishlist.some((element) => {
+    if (element.id === profile?.id) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  const [profileWishlist, setProfileWishlist] = useLocalStorage(
+    "profileWishlist",
+    isFound
+  );
+
   //Send to wishlist array
   const onClick = (e) => {
     e.preventDefault();
@@ -56,18 +70,14 @@ function Animal() {
     wrapAround: true,
   };
 
-  //Check if in wishlist array
-  const isFound = uniqueWishlist.some((element) => {
-    if (element.id === profile?.id) {
-      return true;
-    }
-    return false;
-  });
+  // const [profileWishlist, setProfileWishlist] = useState(isFound);
 
-  const [profileWishlist, setProfileWishlist] = useLocalStorage(
-    "profileWishlist",
-    isFound
-  );
+  // const [profileWishlist, setProfileWishlist] = useLocalStorage(
+  //   "profileWishlist",
+  //   isFound
+  // );
+
+  const [test, setTest] = useState("");
 
   const nameSize = profile?.name?.length;
 
@@ -137,7 +147,7 @@ function Animal() {
                 onClick={(e) => onClick(e)}
                 className="lg:py-2 px-5 p-1 w-fit rounded-xl mb-2 lg:mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
               >
-                Add To Wishlist{" "}
+                {profileWishlist ? "Remove From Wishlist " : "Add To Wishlist "}
                 <i className="fa-regular fa-heart lg:px-2 lg:py-3" />
               </button>
               <div className="divider invisible my-0 sm:my-4 sm:visible mx-6 sm:mx-0">
@@ -162,12 +172,12 @@ function Animal() {
             <i className="fa-regular fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3  badge-outline badge-secondary" />
           )}
         </button>
-        <h2 className="font-bold mt-12 text-3xl text-indigo-500 underline text-center">
+        <h2 className="font-bold mt-12 mx-2 text-2xl lg:text-3xl text-indigo-500 underline text-center">
           A Little About Me...
         </h2>
         <div className="m-5 lg:m-10 w-[16rem] lg:w-auto">
           <div className="">
-            <h1 className="text-2xl font-bold mb-2 underline text-orange-400">
+            <h1 className="text-xl md:text-2xl font-bold mb-2 underline text-indigo-600">
               Personality
             </h1>
             <p className="grid grid-cols-2 text-sm lg:text-[16px] mr-3">
@@ -178,7 +188,7 @@ function Animal() {
               ))}
             </p>
 
-            <div className="grid grid-cols-2 text-sm lg:text-[16px]">
+            <div className="grid grid-cols-2 text-md lg:text-[16px]">
               <li
                 className={
                   profile?.environment?.cats ? "my-[1px]" : "list-none "
@@ -221,19 +231,19 @@ function Animal() {
           </div>
 
           <div>
-            <h1 className="text-2xl underline text-orange-400 font-bold">
+            <h1 className="text-xl md:text-2xl underline text-indigo-600 font-bold">
               Details
             </h1>
-            <div className="flex flex-col justify-between h-[10rem] mt-3">
+            <div className="flex flex-col justify-between lg:h-[10rem] mt-3 gap-3 md:gap-5">
               <p>
                 {profile?.name} is a
-                <span className="text-indigo-500 font-bold">
+                <span className="text-orange-500 font-bold">
                   {` ${profile?.breeds?.primary} `}
                 </span>
               </p>
               <p className="">
                 {profile?.gender === "Male" ? "He" : "She"} is
-                <span className="text-indigo-500 font-bold">
+                <span className="text-orange-500 font-bold">
                   {profile?.attributes?.house_trained
                     ? " house trained"
                     : " not yet house trained"}
@@ -242,7 +252,7 @@ function Animal() {
 
               <p className="">
                 Vaccines/shots are
-                <span className="text-indigo-500 font-bold">
+                <span className="text-orange-500 font-bold">
                   {profile?.attributes?.shots_current
                     ? " fully up to date!"
                     : " not yet up to date."}
@@ -251,20 +261,20 @@ function Animal() {
 
               <p className="">
                 {profile?.name} has
-                <span className="text-indigo-500 font-bold">
+                <span className="text-orange-500 font-bold">
                   {profile?.attributes?.spayed_neutered
                     ? " been spayed/neutered"
                     : " not yet been spayed/neutered"}
                 </span>
               </p>
 
-              <p className="">
+              <li className="list-none text-error font bold mb-6">
                 {profile?.attributes?.special_needs ? "Special Needs" : ""}
-              </p>
+              </li>
 
               <button
                 onClick={() => navigate("/search")}
-                className="bottom-10 hidden md:block absolute text-orange-200 bg-indigo-300 p-2 rounded-xl shadow hover:shadow-xl"
+                className="bottom-10  md:absolute w-36 text-orange-200 bg-indigo-300 p-2 rounded-xl shadow hover:shadow-xl"
               >
                 Back To Search
               </button>
