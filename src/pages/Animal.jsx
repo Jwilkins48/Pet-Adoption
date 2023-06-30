@@ -1,5 +1,4 @@
-import { useEffect, useContext, useState } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import AnimalContext from "../context/AnimalContext";
 import paw from "../components/Assets/paw-prints.webp";
@@ -11,7 +10,6 @@ function Animal() {
 
   const {
     animalPage,
-    getAnimalProfile,
     profile,
     makeProfileCall,
     dispatch,
@@ -19,6 +17,7 @@ function Animal() {
     removeFromWishlist,
     uniqueWishlist,
   } = useContext(AnimalContext);
+  const nameSize = profile?.name?.length;
 
   //Check if in wishlist array
   const isFound = uniqueWishlist.some((element) => {
@@ -29,10 +28,9 @@ function Animal() {
     }
   });
 
-  const [profileWishlist, setProfileWishlist] = useLocalStorage(
-    "profileWishlist",
-    isFound
-  );
+  useEffect(() => {
+    console.log(isFound);
+  }, []);
 
   //Send to wishlist array
   const onClick = (e) => {
@@ -44,14 +42,13 @@ function Animal() {
       gender: profile.gender,
       age: profile.age,
       description: profile.description,
-      checked: profileWishlist,
+      checked: isFound,
     };
     if (wish.checked === false) {
       addToWishlist(wish);
     } else {
       removeFromWishlist(profile?.id);
     }
-    setProfileWishlist(!profileWishlist);
   };
 
   // Default img if none
@@ -69,17 +66,6 @@ function Animal() {
     initialIndex: 1,
     wrapAround: true,
   };
-
-  // const [profileWishlist, setProfileWishlist] = useState(isFound);
-
-  // const [profileWishlist, setProfileWishlist] = useLocalStorage(
-  //   "profileWishlist",
-  //   isFound
-  // );
-
-  const [test, setTest] = useState("");
-
-  const nameSize = profile?.name?.length;
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-8 bg-indigo-100 lg:h-[75vh] w-full rounded-lg p-5 border-2 border-blue-300 relative h-auto mt-32">
@@ -147,7 +133,7 @@ function Animal() {
                 onClick={(e) => onClick(e)}
                 className="lg:py-2 px-5 p-1 w-fit rounded-xl mb-2 lg:mb-5 shadow-lg hover:shadow-xl bg-orange-200 border-2 border-orange-300 hover:border-orange-300 text-indigo-400 hover:bg-orange-100"
               >
-                {profileWishlist ? "Remove From Wishlist " : "Add To Wishlist "}
+                {isFound ? "Remove From Wishlist " : "Add To Wishlist "}
                 <i className="fa-regular fa-heart lg:px-2 lg:py-3" />
               </button>
               <div className="divider invisible my-0 sm:my-4 sm:visible mx-6 sm:mx-0">
@@ -166,7 +152,7 @@ function Animal() {
 
       <div className="bg-indigo-200 rounded border-2 border-indigo-300 shadow-lg mt-10 lg:mt-0 relative">
         <button className=" absolute right-5 top-6" onClick={(e) => onClick(e)}>
-          {profileWishlist ? (
+          {isFound ? (
             <i className="fa-solid fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3  badge-secondary" />
           ) : (
             <i className="fa-regular fa-heart absolute right-0 top-[-10px] lg:right-5 lg:top-3 badge px-2 py-3  badge-outline badge-secondary" />

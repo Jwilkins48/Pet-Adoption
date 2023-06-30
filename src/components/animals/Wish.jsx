@@ -9,7 +9,7 @@ function Wish({ item }) {
   let petImage = item.img.length > 0 ? item.img[0].medium : paw;
   const { removeFromWishlist } = useContext(AnimalContext);
   const navigate = useNavigate();
-
+  const nameSize = item?.name?.length;
   return (
     <form className="card h-[35rem] pt-5 w-95 bg-base-100 shadow-xl mt-5 relative border-2 border-pink-300">
       <button onClick={() => removeFromWishlist(item.id)}>
@@ -27,7 +27,9 @@ function Wish({ item }) {
       </div>{" "}
       <div className="card-body">
         <div className="flex items-center">
-          <h2 className="card-title">{item.name}</h2>
+          <h2 className={nameSize > 15 ? "text-sm font-bold" : "card-title"}>
+            {item.name}
+          </h2>
           <div className="badge badge-outline badge-primary ml-2 p-2.5">
             {item.age}
           </div>

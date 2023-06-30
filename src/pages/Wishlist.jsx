@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 function Wishlist() {
   const { uniqueWishlist } = useContext(AnimalContext);
+
   const navigate = useNavigate();
   return (
-    <div className="mt-32">
+    <div className="mt-32 md:mt-44">
       <h1
         className={
           uniqueWishlist?.length > 0
