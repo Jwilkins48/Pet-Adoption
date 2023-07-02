@@ -82,7 +82,7 @@ function AnimalCard({ item }) {
             {item.gender}
           </div>
         </div>
-        <p className="leading-6 description">
+        <p className="leading-6 description break-words">
           {item.description !== null
             ? item.description
             : `${item.name} is a beautiful ${item.age} ${item.species} in need of a loving family. Come meet them today!`}
