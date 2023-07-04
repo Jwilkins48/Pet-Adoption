@@ -10,6 +10,8 @@ function Wish({ item }) {
   const { removeFromWishlist } = useContext(AnimalContext);
   const navigate = useNavigate();
   const nameSize = item?.name?.length;
+  const descSize = item?.description?.length;
+
   return (
     <form className="card h-[35rem] pt-5 w-95 bg-base-100 shadow-xl mt-5 relative border-2 border-pink-300">
       <button onClick={() => removeFromWishlist(item.id)}>
@@ -43,7 +45,7 @@ function Wish({ item }) {
             {item.gender}
           </div>
         </div>
-        <p>
+        <p className={descSize > 140 ? "truncate" : "break-words"}>
           {item.description !== null
             ? item.description
             : `${item.name} is a beautiful ${item.age} ${item.species} in need of a loving family. Come meet them today!`}
